@@ -1,0 +1,13 @@
+export const bg      = "#050d1a";
+export const bg2     = "#081424";
+export const card    = "#091828";
+export const card2   = "#0b1e30";
+export const border  = "#0f2540";
+export const border2 = "#143558";
+export const neon    = "#00ff9c";
+export const cyan    = "#00ccff";
+export const white   = "#ffffff";
+export const muted   = "#6a8da8";
+export const textCol = "#c8e0f0";
+export const red     = "#ff4040";
+export const orange  = "#ff9d3a";
