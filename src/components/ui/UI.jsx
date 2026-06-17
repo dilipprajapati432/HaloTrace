@@ -36,8 +36,10 @@ export function Btn({ children, variant = "solid", style: extra = {}, onClick })
 
 export function Check({ text, color = neon }) {
   return (
-    <div style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 12.5, color: "#ffffff" }}>
-      <span style={{ color, fontSize: 12, fontWeight: 900, marginTop: 1, flexShrink: 0 }}>✓</span>
+    <div style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12.5, color: "#ffffff" }}>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill={color} style={{ flexShrink: 0, marginTop: 1 }}>
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+      </svg>
       <span>{text}</span>
     </div>
   );

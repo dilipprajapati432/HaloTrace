@@ -1,33 +1,69 @@
-import { Btn } from "../ui/UI";
-import { card, border, neon, white, muted } from "../../styles/tokens";
+import { neon, white, muted } from "../../styles/tokens";
 
 export default function CTABanner() {
   return (
-    <section style={{
-      padding: "52px 56px", background: card,
-      borderTop: `1px solid ${border}`, borderBottom: `1px solid ${border}`,
-      display: "flex", alignItems: "center", justifyContent: "space-between",
-      gap: 32, position: "relative", overflow: "hidden",
-    }}>
-      {/* Background glow */}
-      <div style={{ position: "absolute", left: "35%", top: "50%",
-        transform: "translate(-50%,-50%)", width: 400, height: 200,
-        background: `radial-gradient(circle,${neon}08 0%,transparent 70%)`,
-        pointerEvents: "none" }} />
+    <section style={{ padding: "0 56px 60px" }}>
+      <div style={{
+        backgroundColor: "rgba(4, 10, 18, 0.4)",
+        border: "1px solid rgba(0, 255, 135, 0.80)",
+        borderRadius: 12,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 32,
+        boxShadow: `0 0 30px ${neon}20`,
+        overflow: "hidden"
+      }}>
+        {/* Left Side: Graphic and Text */}
+        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+          {/* Graphic forced to cover the left border area with a smooth fade on the right */}
+          <div style={{
+            width: 260, height: 115, flexShrink: 0,
+            WebkitMaskImage: "linear-gradient(to right, black 70%, transparent 100%)",
+            maskImage: "linear-gradient(to right, black 70%, transparent 100%)"
+          }}>
+            <img src="/CTA%20banner.png" alt="CTA Graphic" style={{
+              height: "100%", width: "100%",
+              objectFit: "cover", objectPosition: "center center",
+              display: "block",
+              transform: "scale(1.15)"
+            }} />
+          </div>
 
-      <div style={{ position: "relative" }}>
-        <h2 style={{ fontSize: 23, fontWeight: 900, color: white, margin: "0 0 8px", lineHeight: 1.35 }}>
-          Ready to Start Your Cybersecurity Journey<br />
-          <span style={{ color: neon }}>or Secure Your Organization?</span>
-        </h2>
-        <p style={{ fontSize: 13, color: muted, margin: 0 }}>
-          Join thousands of learners and hundreds of organizations who trust us.
-        </p>
-      </div>
+          <div style={{ padding: "16px 0" }}>
+            <h2 style={{ fontSize: 22, fontWeight: 500, color: white, margin: "0 0 6px", lineHeight: 1.35 }}>
+              Ready to Start Your Cybersecurity Journey<br />
+              or Secure Your Organization?
+            </h2>
+            <p style={{ fontSize: 14, color: muted, margin: 0 }}>
+              Join thousands of learners and hundreds of organizations who trust us.
+            </p>
+          </div>
+        </div>
 
-      <div style={{ display: "flex", gap: 14, flexShrink: 0, position: "relative" }}>
-        <Btn style={{ padding: "14px 30px", fontSize: 14 }}>Explore Courses</Btn>
-        <Btn variant="outline" style={{ padding: "14px 30px", fontSize: 14 }}>Book Consultation</Btn>
+        {/* Right Side: Buttons */}
+        <div style={{ display: "flex", gap: 14, flexShrink: 0, paddingRight: 32 }}>
+          <button style={{
+            background: "linear-gradient(90deg, #4ade80, #22c55e)",
+            color: "#040e1a", fontWeight: 700, padding: "14px 28px",
+            borderRadius: 6, border: "none", cursor: "pointer", fontSize: 13,
+            transition: "opacity .15s"
+          }}
+            onMouseEnter={e => e.currentTarget.style.opacity = ".85"}
+            onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
+            Explore Courses
+          </button>
+          <button style={{
+            background: "linear-gradient(90deg, #0ea5e9, #3b82f6)",
+            color: white, fontWeight: 700, padding: "14px 28px",
+            borderRadius: 6, border: "none", cursor: "pointer", fontSize: 13,
+            transition: "opacity .15s"
+          }}
+            onMouseEnter={e => e.currentTarget.style.opacity = ".85"}
+            onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
+            Book Consultation
+          </button>
+        </div>
       </div>
     </section>
   );

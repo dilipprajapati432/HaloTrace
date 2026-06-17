@@ -1,19 +1,11 @@
 import { bg2, card, border, border2, neon, cyan, white, textCol } from "../../styles/tokens";
 
-const LAB_GRADIENTS = [
-  "linear-gradient(135deg,#0a1a0f,#0d2810)",
-  "linear-gradient(135deg,#091828,#0b1e38)",
-  "linear-gradient(135deg,#1a0808,#280e0e)",
-  "linear-gradient(135deg,#0f1a0a,#182a10)",
-  "linear-gradient(135deg,#091828,#0b1838)",
-];
-
 const LABS = [
-  { name: "Network Scanning",    emoji: "🔎" },
-  { name: "Wireshark Analysis",  emoji: "📡" },
-  { name: "Malware Analysis",    emoji: "🦠" },
-  { name: "OSINT Investigation", emoji: "🕵️" },
-  { name: "SIEM Dashboard",      emoji: "📊" },
+  { name: "Network Scanning",    bgImg: "/network%20malware.png", bgSize: "300% 100%", bgPos: "0% center" },
+  { name: "Wireshark Analysis",  bgImg: "/network%20malware.png", bgSize: "300% 100%", bgPos: "50% center" },
+  { name: "Malware Analysis",    bgImg: "/network%20malware.png", bgSize: "300% 100%", bgPos: "100% center" },
+  { name: "OSINT Investigation", bgImg: "/OSINT%20and%20SIEM.png", bgSize: "200% 100%", bgPos: "0% center" },
+  { name: "SIEM Dashboard",      bgImg: "/OSINT%20and%20SIEM.png", bgSize: "200% 100%", bgPos: "100% center" },
 ];
 
 export default function Labs() {
@@ -30,12 +22,29 @@ export default function Labs() {
         </a>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 14 }}>
-        {LABS.map(({ name, emoji }, idx) => (
+      <div style={{
+        border: `1px solid ${border2}`,
+        borderRadius: 12,
+        padding: "36px 20px",
+        background: "rgba(4, 10, 18, 0.4)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
+      }}>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(5, 1fr)",
+          gap: 14,
+          overflowX: "auto",
+          padding: "16px 8px 16px",
+          margin: "-16px -8px 0",
+          scrollbarWidth: "thin",
+          scrollbarColor: `${border2} transparent`
+        }}>
+        {LABS.map(({ name, bgImg, bgSize, bgPos }, idx) => (
           <div key={name} style={{
             background: card, border: `1px solid ${border2}`,
             borderRadius: 12, overflow: "hidden", cursor: "pointer",
             transition: "border-color .18s, transform .18s, box-shadow .18s",
+            minWidth: 220
           }}
           onMouseEnter={e => {
             e.currentTarget.style.borderColor = cyan;
@@ -47,10 +56,8 @@ export default function Labs() {
             e.currentTarget.style.transform = "none";
             e.currentTarget.style.boxShadow = "none";
           }}>
-            <div style={{ height: 136, background: LAB_GRADIENTS[idx],
-              display: "grid", placeItems: "center", fontSize: 52,
+            <div style={{ height: 136, background: `url('${bgImg}') ${bgPos} / ${bgSize} no-repeat`,
               borderBottom: `1px solid ${border}`, position: "relative" }}>
-              {emoji}
               <div style={{ position: "absolute", inset: 0,
                 background: "repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,204,255,.025) 3px,rgba(0,204,255,.025) 4px)" }} />
             </div>
@@ -59,6 +66,7 @@ export default function Labs() {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </section>
   );

@@ -18,8 +18,8 @@ const SOCIAL = [
 
 const CONTACT_INFO = [
   ["✉️", "hello@skillnetics.com"],
-  ["📞", "+91 98765 43210"],
-  ["📍", "India"],
+  ["📞", "Phone Number"],
+  ["📍", "Gujarat, India"],
 ];
 
 const LEGAL_LINKS = ["Privacy Policy", "Terms & Conditions", "Security Policy", "Responsible Disclosure"];

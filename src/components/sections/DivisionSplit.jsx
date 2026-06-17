@@ -17,7 +17,7 @@ function DivisionCard({ children, accentColor }) {
   return (
     <div style={{
       background: "rgba(4, 10, 18, 0.4)", backdropFilter: "blur(12px)",
-      border: `1px solid ${border2}`,
+      border: `1px solid transparent`,
       borderRadius: 14, overflow: "hidden", position: "relative",
       transition: "border-color .3s, box-shadow .3s",
       minHeight: 340,
@@ -39,17 +39,16 @@ function DivisionCard({ children, accentColor }) {
 export default function DivisionSplit() {
   return (
     <section style={{
-      padding: "80px 40px",
-      background: `url('/halotrace-skillnetics background.png') center/cover no-repeat, ${bg}`,
-      display: "flex", justifyContent: "center"
+      padding: "80px 56px",
+      background: bg,
     }}>
       <div style={{
         position: "relative",
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
         gap: 22,
-        maxWidth: 1300,
-        width: "100%"
+        width: "100%",
+        background: `url('/halotrace-skillnetics background.png') center/104% 104% no-repeat`
       }}>
 
         {/* CENTER X OVERLAY */}
@@ -66,7 +65,7 @@ export default function DivisionSplit() {
         <DivisionCard accentColor={neon}>
           <div style={{
             display: "grid", gridTemplateColumns: "1fr 1.5fr", height: "100%",
-            background: "linear-gradient(135deg, rgba(5,20,16,0.6) 0%, rgba(6,17,26,0.2) 100%)"
+            background: `linear-gradient(135deg, rgba(5,20,16,0.6) 0%, rgba(6,17,26,0.2) 100%)`
           }}>
             <div style={{
               backgroundImage: "url('/hacker.png')",
@@ -96,7 +95,7 @@ export default function DivisionSplit() {
         <DivisionCard accentColor={cyan}>
           <div style={{
             display: "grid", gridTemplateColumns: "1.5fr 1fr", height: "100%",
-            background: "linear-gradient(135deg, rgba(6,17,26,0.2) 0%, rgba(4,10,18,0.6) 100%)"
+            background: `linear-gradient(135deg, rgba(6,17,26,0.2) 0%, rgba(4,10,18,0.6) 100%)`
           }}>
             <div style={{ padding: "40px 0 40px 40px", display: "flex", flexDirection: "column", justifyContent: "center", zIndex: 2 }}>
               <div style={{ fontSize: 24, fontWeight: 900, color: cyan, letterSpacing: 1, marginBottom: 4 }}>

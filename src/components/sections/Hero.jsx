@@ -5,10 +5,10 @@ import { bg2, bg, neon, cyan, white, muted } from "../../styles/tokens";
 export default function Hero() {
   return (
     <section style={{
-      paddingTop: 60, minHeight: "100vh", position: "relative", overflow: "hidden",
+      minHeight: "100vh", position: "relative", overflow: "hidden",
       background: `url('/hero-bg.png') calc(50% + 120px) center/cover no-repeat, linear-gradient(175deg,${bg2} 0%,${bg} 100%)`,
       display: "grid", gridTemplateColumns: "1fr 420px", gap: 44,
-      alignItems: "center", padding: "88px 56px 68px",
+      alignItems: "center", padding: "58px 56px 108px",
     }}>
       {/* Glow orbs */}
       <div style={{
@@ -38,7 +38,7 @@ export default function Hero() {
         }}>
           ENTERPRISE SECURITY SOLUTIONS
         </h1>
-        <p style={{ fontSize: 15, color: white, opacity: 0.8,lineHeight: 1.78, margin: "0 0 34px", maxWidth: 500 }}>
+        <p style={{ fontSize: 15, color: white, opacity: 0.8, lineHeight: 1.78, margin: "0 0 34px", maxWidth: 500 }}>
           Empowering individuals with in-demand cybersecurity skills<br />
           and protecting organizations through professional security services.
         </p>
