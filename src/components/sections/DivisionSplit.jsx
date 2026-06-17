@@ -3,33 +3,34 @@ import { bg, card, border2, neon, cyan, muted, textCol } from "../../styles/toke
 
 const SKILL_FEATURES = [
   "Industry-Aligned Courses", "Workshops & Bootcamps",
-  "Hands-on Cyber Labs",      "Career Guidance",
-  "Certifications",           "Internship Programs",
+  "Hands-on Cyber Labs", "Career Guidance",
+  "Certifications", "Internship Programs",
 ];
 
 const HALO_FEATURES = [
-  "VAPT & Assessments",  "Security Audits",
-  "Digital Forensics",   "Security Consulting",
-  "Incident Response",   "24/7 Expert Support",
+  "VAPT & Assessments", "Security Audits",
+  "Digital Forensics", "Security Consulting",
+  "Incident Response", "24/7 Expert Support",
 ];
 
 function DivisionCard({ children, accentColor }) {
   return (
     <div style={{
-      background: card, border: `1px solid ${border2}`,
+      background: "rgba(4, 10, 18, 0.4)", backdropFilter: "blur(12px)",
+      border: `1px solid ${border2}`,
       borderRadius: 14, overflow: "hidden", position: "relative",
       transition: "border-color .3s, box-shadow .3s",
       minHeight: 340,
       display: "flex", flexDirection: "column"
     }}
-    onMouseEnter={e => {
-      e.currentTarget.style.borderColor = accentColor;
-      e.currentTarget.style.boxShadow = `0 0 24px ${accentColor}12`;
-    }}
-    onMouseLeave={e => {
-      e.currentTarget.style.borderColor = border2;
-      e.currentTarget.style.boxShadow = "none";
-    }}>
+      onMouseEnter={e => {
+        e.currentTarget.style.borderColor = accentColor;
+        e.currentTarget.style.boxShadow = `0 0 24px ${accentColor}12`;
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.borderColor = border2;
+        e.currentTarget.style.boxShadow = "none";
+      }}>
       {children}
     </div>
   );
@@ -37,16 +38,20 @@ function DivisionCard({ children, accentColor }) {
 
 export default function DivisionSplit() {
   return (
-    <section style={{ padding: "80px 40px", background: bg, display: "flex", justifyContent: "center" }}>
-      <div style={{ 
-        position: "relative", 
-        display: "grid", 
-        gridTemplateColumns: "1fr 1fr", 
+    <section style={{
+      padding: "80px 40px",
+      background: `url('/halotrace-skillnetics background.png') center/cover no-repeat, ${bg}`,
+      display: "flex", justifyContent: "center"
+    }}>
+      <div style={{
+        position: "relative",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
         gap: 22,
         maxWidth: 1300,
         width: "100%"
       }}>
-        
+
         {/* CENTER X OVERLAY */}
         <div style={{
           position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
@@ -59,9 +64,9 @@ export default function DivisionSplit() {
 
         {/* SKILLNETICS */}
         <DivisionCard accentColor={neon}>
-          <div style={{ 
+          <div style={{
             display: "grid", gridTemplateColumns: "1fr 1.5fr", height: "100%",
-            background: "linear-gradient(135deg, #051410 0%, #06111a 100%)"
+            background: "linear-gradient(135deg, rgba(5,20,16,0.6) 0%, rgba(6,17,26,0.2) 100%)"
           }}>
             <div style={{
               backgroundImage: "url('/hacker.png')",
@@ -89,9 +94,9 @@ export default function DivisionSplit() {
 
         {/* HALOTRACE */}
         <DivisionCard accentColor={cyan}>
-          <div style={{ 
+          <div style={{
             display: "grid", gridTemplateColumns: "1.5fr 1fr", height: "100%",
-            background: "linear-gradient(135deg, #06111a 0%, #040a12 100%)"
+            background: "linear-gradient(135deg, rgba(6,17,26,0.2) 0%, rgba(4,10,18,0.6) 100%)"
           }}>
             <div style={{ padding: "40px 0 40px 40px", display: "flex", flexDirection: "column", justifyContent: "center", zIndex: 2 }}>
               <div style={{ fontSize: 24, fontWeight: 900, color: cyan, letterSpacing: 1, marginBottom: 4 }}>
@@ -105,9 +110,9 @@ export default function DivisionSplit() {
                 {HALO_FEATURES.map(f => <Check key={f} text={f} color={cyan} />)}
               </div>
               <div>
-                <Btn style={{ 
-                  padding: "12px 24px", fontSize: 13.5, 
-                  background: cyan, color: "#040e1a", borderColor: cyan 
+                <Btn style={{
+                  padding: "12px 24px", fontSize: 13.5,
+                  background: cyan, color: "#040e1a", borderColor: cyan
                 }}>
                   Request Security Assessment →
                 </Btn>
