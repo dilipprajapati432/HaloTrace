@@ -28,15 +28,15 @@ export default function Footer() {
   const [email, setEmail] = useState("");
 
   return (
-    <footer style={{ background: "#030c14", padding: "52px 56px 28px",
+    <footer className="footer-container" style={{ background: "#030c14", padding: "52px 56px 28px",
       borderTop: `1px solid ${border}` }}>
 
       {/* Main grid */}
-      <div style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
+      <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
         gap: 36, marginBottom: 38 }}>
 
         {/* Brand column */}
-        <div>
+        <div className="footer-brand">
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 13 }}>
             <div style={{ width: 36, height: 36, borderRadius: 8, flexShrink: 0,
               background: `linear-gradient(135deg,${neon},${cyan})`,
@@ -80,19 +80,20 @@ export default function Footer() {
       </div>
 
       {/* Contact + newsletter */}
-      <div style={{ borderTop: `1px solid ${border}`, paddingTop: 22,
+      <div className="footer-newsletter" style={{ borderTop: `1px solid ${border}`, paddingTop: 22,
         display: "grid", gridTemplateColumns: "1fr auto", gap: 20,
         marginBottom: 22, alignItems: "center" }}>
-        <div style={{ display: "flex", gap: 26, flexWrap: "wrap" }}>
+        <div className="contact-info" style={{ display: "flex", gap: 26, flexWrap: "wrap" }}>
           {CONTACT_INFO.map(([icon, text]) => (
             <div key={text} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: muted }}>
               <span>{icon}</span><span>{text}</span>
             </div>
           ))}
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ fontSize: 11, color: muted, whiteSpace: "nowrap" }}>Subscribe to Newsletter</span>
+        <div className="newsletter-form" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span className="newsletter-label" style={{ fontSize: 11, color: muted, whiteSpace: "nowrap" }}>Subscribe to Newsletter</span>
           <input
+            className="newsletter-input"
             value={email}
             onChange={e => setEmail(e.target.value)}
             placeholder="Your email address"
@@ -107,13 +108,13 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div style={{ borderTop: `1px solid ${border}`, paddingTop: 18,
+      <div className="footer-bottom" style={{ borderTop: `1px solid ${border}`, paddingTop: 18,
         display: "flex", justifyContent: "space-between", alignItems: "center",
         flexWrap: "wrap", gap: 10 }}>
         <div style={{ fontSize: 11, color: muted }}>
           © 2024 Skillnetics × HaloTrace. All Rights Reserved.
         </div>
-        <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+        <div className="footer-legal-links" style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
           {LEGAL_LINKS.map(l => (
             <a key={l} href="#" style={{ fontSize: 11, color: muted,
               textDecoration: "none", transition: "color .15s" }}

@@ -18,7 +18,7 @@ const COURSES = [
 
 export default function Courses() {
   return (
-    <section style={{ padding: "60px 56px", background: bg, overflow: "hidden" }}>
+    <section className="section-container" style={{ padding: "60px 56px", background: bg, overflow: "hidden" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 26 }}>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4 }}>
           POPULAR <span style={{ color: neon }}>COURSES</span>

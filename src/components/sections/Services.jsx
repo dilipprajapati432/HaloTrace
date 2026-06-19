@@ -38,7 +38,7 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section style={{ padding: "60px 56px", background: bg2 }}>
+    <section className="section-container" style={{ padding: "60px 56px", background: bg2 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 25 }}>
         <h2 style={{ textAlign: "center", fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4, width: "100%" }}>
           OUR SECURITY <span style={{ color: neon }}>SERVICES</span>

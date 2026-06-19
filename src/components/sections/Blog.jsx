@@ -17,7 +17,7 @@ const POSTS = [
 
 export default function Blog() {
   return (
-    <section style={{ padding: "60px 56px", background: bg2 }}>
+    <section className="section-container" style={{ padding: "60px 56px", background: bg2 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 26 }}>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4 }}>
           FROM OUR <span style={{ color: neon }}>BLOG</span>
@@ -34,7 +34,7 @@ export default function Blog() {
         background: "rgba(4, 10, 18, 0.4)", boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
       }}>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+        <div className="blog-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
           {POSTS.map(({ date, title, emoji, gradient }) => (
             <div key={title} style={{
               background: card, border: `1px solid ${border2}`,

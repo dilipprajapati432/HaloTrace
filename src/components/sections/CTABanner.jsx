@@ -2,8 +2,8 @@ import { neon, white, muted } from "../../styles/tokens";
 
 export default function CTABanner() {
   return (
-    <section style={{ padding: "0 56px 60px" }}>
-      <div style={{
+    <section className="section-container" style={{ padding: "0 56px 60px" }}>
+      <div className="cta-container" style={{
         backgroundColor: "rgba(4, 10, 18, 0.4)",
         border: "1px solid rgba(0, 255, 135, 0.80)",
         borderRadius: 12,
@@ -15,7 +15,7 @@ export default function CTABanner() {
         overflow: "hidden"
       }}>
         {/* Left Side: Graphic and Text */}
-        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+        <div className="cta-left" style={{ display: "flex", alignItems: "center", gap: 28 }}>
           {/* Graphic forced to cover the left border area with a smooth fade on the right */}
           <div style={{
             width: 260, height: 115, flexShrink: 0,
@@ -42,7 +42,7 @@ export default function CTABanner() {
         </div>
 
         {/* Right Side: Buttons */}
-        <div style={{ display: "flex", gap: 14, flexShrink: 0, paddingRight: 32 }}>
+        <div className="cta-buttons" style={{ display: "flex", gap: 14, flexShrink: 0, paddingRight: 32 }}>
           <button style={{
             background: "linear-gradient(90deg, #4ade80, #22c55e)",
             color: "#040e1a", fontWeight: 700, padding: "14px 28px",

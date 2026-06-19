@@ -1,4 +1,5 @@
 import globalCSS from "./styles/global";
+import "./styles/responsive.css";
 import { bg } from "./styles/tokens";
 
 import Navbar              from "./components/layout/Navbar";

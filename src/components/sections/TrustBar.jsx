@@ -21,12 +21,12 @@ const STATS = [
 
 export default function TrustBar() {
   return (
-    <div style={{
+    <div className="trust-bar-container" style={{
       display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16,
       padding: "0 56px", position: "relative", zIndex: 10, marginTop: -30
     }}>
       {STATS.map(({ icon, value, label, color }) => (
-        <div key={label} style={{
+        <div key={label} className="trust-bar-card" style={{
           display: "flex", alignItems: "center", gap: 16,
           padding: "16px 20px",
           border: `1px solid ${border2}`,

@@ -18,7 +18,7 @@ export default function CaseStudies() {
         </a>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "240px 1fr", gap: 16 }}>
+      <div className="case-study-inner" style={{ display: "grid", gridTemplateColumns: "240px 1fr", gap: 16 }}>
         {/* Left: Image Card */}
         <div style={{
           background: "url('/Web%20Security%20vulnearability%20assessement.png') center / cover no-repeat",

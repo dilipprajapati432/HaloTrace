@@ -4,7 +4,7 @@ import { bg2, bg, neon, cyan, white, muted } from "../../styles/tokens";
 
 export default function Hero() {
   return (
-    <section style={{
+    <section className="hero-container" style={{
       minHeight: "100vh", position: "relative", overflow: "hidden",
       background: `url('/hero-bg.png') calc(50% + 120px) center/cover no-repeat, linear-gradient(175deg,${bg2} 0%,${bg} 100%)`,
       display: "grid", gridTemplateColumns: "1fr 420px", gap: 44,
@@ -21,17 +21,17 @@ export default function Hero() {
       }} />
 
       {/* Left: copy */}
-      <div style={{ position: "relative", zIndex: 1 }}>
+      <div className="hero-content" style={{ position: "relative", zIndex: 1 }}>
         <div style={{ marginBottom: 18 }}>
           <Tag>WELCOME TO SKILLNETICS × HALOTRACE</Tag>
         </div>
-        <h1 style={{
+        <h1 className="hero-title" style={{
           fontSize: 46, fontWeight: 900, color: white,
           lineHeight: 1.03, margin: "0 0 2px", letterSpacing: -.5
         }}>
           CYBERSECURITY TRAINING &amp;
         </h1>
-        <h1 style={{
+        <h1 className="hero-title" style={{
           fontSize: 46, fontWeight: 900, margin: "0 0 24px",
           lineHeight: 1.03, letterSpacing: -.5,
           color: neon
@@ -51,7 +51,7 @@ export default function Hero() {
       </div>
 
       {/* Right: threat map */}
-      <div style={{ position: "relative", zIndex: 1 }}>
+      <div className="hero-threat-map" style={{ position: "relative", zIndex: 1 }}>
         <ThreatMap />
       </div>
     </section>

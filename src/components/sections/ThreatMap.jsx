@@ -122,7 +122,7 @@ export default function ThreatMap() {
   }, []);
 
   return (
-    <div style={{ border: `1px solid ${border2}`, borderRadius: 12, overflow: "hidden", position: "relative",
+    <div className="threat-map-container" style={{ border: `1px solid ${border2}`, borderRadius: 12, overflow: "hidden", position: "relative",
       background: "rgba(4, 10, 18, 0.4)", backdropFilter: "blur(12px)", boxShadow: `0 0 40px ${cyan}10` }}>
       
       <div style={{ padding: "16px 20px 10px", display: "flex", alignItems: "center", gap: 8 }}>
@@ -154,7 +154,7 @@ export default function ThreatMap() {
         </div>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between", padding: "16px 20px 10px" }}>
+      <div className="threat-map-stats" style={{ display: "flex", justifyContent: "space-between", padding: "16px 20px 10px" }}>
         {[
           ["LIVE ATTACKS", attacks.toLocaleString(), neon], 
           ["TARGETS", "142", cyan], 
@@ -167,7 +167,7 @@ export default function ThreatMap() {
         ))}
       </div>
 
-      <div style={{ textAlign: "left", padding: "0 20px 20px", fontSize: 11, color: muted }}>
+      <div className="threat-map-footer" style={{ textAlign: "left", padding: "0 20px 20px", fontSize: 11, color: muted }}>
         <span style={{ color: neon, marginRight: 6 }}>●</span>Real-time attack visualization
       </div>
     </div>

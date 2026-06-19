@@ -11,7 +11,7 @@ export function Tag({ children, color = neon }) {
   );
 }
 
-export function Btn({ children, variant = "solid", style: extra = {}, onClick }) {
+export function Btn({ children, variant = "solid", className = "", style: extra = {}, onClick }) {
   const base = {
     display: "inline-flex", alignItems: "center", gap: 6,
     padding: "10px 22px", borderRadius: 6, fontSize: 13, fontWeight: 700,
@@ -26,7 +26,7 @@ export function Btn({ children, variant = "solid", style: extra = {}, onClick })
   };
   const v = variants[variant] || variants.solid;
   return (
-    <button style={{ ...base, ...v, ...extra }} onClick={onClick}
+    <button className={className} style={{ ...base, ...v, ...extra }} onClick={onClick}
       onMouseEnter={e => { e.currentTarget.style.opacity = ".82"; e.currentTarget.style.transform = "translateY(-1px)"; }}
       onMouseLeave={e => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.transform = "none"; }}>
       {children}

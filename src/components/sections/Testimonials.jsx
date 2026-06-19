@@ -29,7 +29,7 @@ export default function Testimonials() {
   const next = () => setIdx((idx + 1) % TESTIMONIALS.length);
 
   return (
-    <div style={{
+    <div className="testimonial-container" style={{
       border: `1px solid ${border2}`, borderRadius: 12, padding: "32px 28px",
       background: "rgba(4, 10, 18, 0.4)", boxShadow: "0 8px 32px rgba(0,0,0,0.2)",
       display: "flex", flexDirection: "column", height: "100%", boxSizing: "border-box"
@@ -45,11 +45,11 @@ export default function Testimonials() {
         </a>
       </div>
 
-      <div style={{ background: card, border: `1px solid ${border2}`, borderRadius: 12, padding: "24px", height: 260, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+      <div className="testimonial-card" style={{ background: card, border: `1px solid ${border2}`, borderRadius: 12, padding: "24px", height: 260, display: "flex", flexDirection: "column", justifyContent: "center" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <NavBtn onClick={prev}>‹</NavBtn>
 
-          <div style={{ flex: 1, padding: "0 32px", display: "flex", gap: 32, alignItems: "center" }}>
+          <div className="testimonial-content" style={{ flex: 1, padding: "0 32px", display: "flex", gap: 32, alignItems: "center" }}>
             <div style={{ width: 140, height: 140, borderRadius: "50%", flexShrink: 0,
               background: "transparent", overflow: "hidden",
               boxShadow: `0 0 40px rgba(0,255,255,0.05)`,

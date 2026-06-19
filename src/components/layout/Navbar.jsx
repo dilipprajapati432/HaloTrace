@@ -64,6 +64,7 @@ function NavItem({ item }) {
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 8);
@@ -72,7 +73,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav style={{
+    <nav className="nav-container" style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 999, height: 72,
       display: "flex", alignItems: "center", justifyContent: "space-between",
       padding: "0 40px",
@@ -82,7 +83,7 @@ export default function Navbar() {
       transition: "all .25s",
     }}>
       {/* Logo */}
-      <div style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
+      <div className="nav-logo" style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: neon }}>
           <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
@@ -91,26 +92,31 @@ export default function Navbar() {
           </svg>
         </div>
         <div>
-          <div style={{ fontSize: 18, fontWeight: 900, color: white, lineHeight: 1.1, letterSpacing: 0.5 }}>
+          <div className="nav-title" style={{ fontSize: 18, fontWeight: 900, color: white, lineHeight: 1.1, letterSpacing: 0.5 }}>
             SKILLNETICS <span style={{ color: muted, fontWeight: 300, margin: "0 4px" }}>×</span>{" "}
             <span style={{ color: cyan }}>H</span><span style={{ color: white }}>ALOTRACE</span>
           </div>
-          <div style={{ fontSize: 11, color: muted, letterSpacing: .2, marginTop: 2 }}>
+          <div className="nav-subtitle" style={{ fontSize: 11, color: muted, letterSpacing: .2, marginTop: 2 }}>
             Cybersecurity Training &amp; Enterprise Security Solutions
           </div>
         </div>
       </div>
 
       {/* Nav links */}
-      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <div className={`mobile-nav-links ${menuOpen ? 'open' : ''}`} style={{ display: "flex", alignItems: "center", gap: 12 }}>
         {navItems.map((item) => (
           <NavItem key={item.label} item={item} />
         ))}
       </div>
 
-      <Btn style={{ padding: "12px 28px", fontSize: 14, fontWeight: 700, background: neon, color: "#040e1a", borderColor: neon }}>
-        Book Consultation
-      </Btn>
+      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <Btn className="nav-book-btn" style={{ padding: "12px 28px", fontSize: 14, fontWeight: 700, background: neon, color: "#040e1a", borderColor: neon }}>
+          Book Consultation
+        </Btn>
+        <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? '✕' : '☰'}
+        </button>
+      </div>
     </nav>
   );
 }

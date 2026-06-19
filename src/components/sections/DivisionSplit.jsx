@@ -38,11 +38,11 @@ function DivisionCard({ children, accentColor }) {
 
 export default function DivisionSplit() {
   return (
-    <section style={{
+    <section className="section-container" style={{
       padding: "80px 56px",
       background: bg,
     }}>
-      <div style={{
+      <div className="division-grid" style={{
         position: "relative",
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -63,7 +63,7 @@ export default function DivisionSplit() {
 
         {/* SKILLNETICS */}
         <DivisionCard accentColor={neon}>
-          <div style={{
+          <div className="division-card-inner" style={{
             display: "grid", gridTemplateColumns: "1fr 1.5fr", height: "100%",
             background: `linear-gradient(135deg, rgba(5,20,16,0.6) 0%, rgba(6,17,26,0.2) 100%)`
           }}>
@@ -93,7 +93,7 @@ export default function DivisionSplit() {
 
         {/* HALOTRACE */}
         <DivisionCard accentColor={cyan}>
-          <div style={{
+          <div className="division-card-inner-reverse" style={{
             display: "grid", gridTemplateColumns: "1.5fr 1fr", height: "100%",
             background: `linear-gradient(135deg, rgba(6,17,26,0.2) 0%, rgba(4,10,18,0.6) 100%)`
           }}>
