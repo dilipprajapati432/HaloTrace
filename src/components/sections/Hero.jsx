@@ -5,8 +5,9 @@ import { bg2, bg, neon, cyan, white, muted } from "../../styles/tokens";
 export default function Hero() {
   return (
     <section className="hero-container" style={{
-      minHeight: "100vh", position: "relative", overflow: "hidden",
-      background: `url('/hero-bg.png') calc(50% + 120px) center/cover no-repeat, linear-gradient(175deg,${bg2} 0%,${bg} 100%)`,
+      minHeight: "calc(100vh - 90px - 72px)", position: "relative", overflow: "hidden",
+      marginTop: "72px",
+      background: `linear-gradient(175deg, ${bg2}33 0%, ${bg}66 100%), url('/hero-bg%204.png') center 30% / cover no-repeat`,
       display: "grid", gridTemplateColumns: "1fr 420px", gap: 44,
       alignItems: "center", padding: "58px 56px 108px",
     }}>
@@ -38,7 +39,7 @@ export default function Hero() {
         }}>
           ENTERPRISE SECURITY SOLUTIONS
         </h1>
-        <p style={{ fontSize: 15, color: white, opacity: 0.8, lineHeight: 1.78, margin: "0 0 34px", maxWidth: 500 }}>
+        <p style={{ fontSize: 15, color: white, opacity: 0.85, lineHeight: 1.78, margin: "0 0 34px", maxWidth: 500 }}>
           Empowering individuals with in-demand cybersecurity skills<br />
           and protecting organizations through professional security services.
         </p>

@@ -1,38 +1,27 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import globalCSS from "./styles/global";
 import "./styles/responsive.css";
 import { bg } from "./styles/tokens";
 
-import Navbar              from "./components/layout/Navbar";
-import Hero                from "./components/sections/Hero";
-import TrustBar            from "./components/sections/TrustBar";
-import DivisionSplit       from "./components/sections/DivisionSplit";
-import Services            from "./components/sections/Services";
-import Courses             from "./components/sections/Courses";
-import Labs                from "./components/sections/Labs";
-import CaseAndTestimonials from "./components/sections/CaseAndTestimonials";
-import Partners            from "./components/sections/Partners";
-import Blog                from "./components/sections/Blog";
-import CTABanner           from "./components/sections/CTABanner";
-import Footer              from "./components/layout/Footer";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
       <style>{globalCSS}</style>
-      <div style={{ minHeight: "100vh", background: bg }}>
+      <div style={{ minHeight: "100vh", background: bg, display: "flex", flexDirection: "column" }}>
         <Navbar />
-        <Hero />
-        <TrustBar />
-        <DivisionSplit />
-        <Services />
-        <Courses />
-        <Labs />
-        <CaseAndTestimonials />
-        <Partners />
-        <Blog />
-        <CTABanner />
+        <div style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
-    </>
+    </BrowserRouter>
   );
 }

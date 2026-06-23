@@ -48,13 +48,13 @@ export default function Courses() {
           scrollbarColor: `${border2} transparent`
         }}>
           {COURSES.map(({ title, level, weeks }, idx) => (
-            <div key={title} style={{
+            <div className="course-card-wrapper" key={title} style={{
               background: "rgba(4, 10, 18, 0.4)",
               backdropFilter: "blur(12px)",
               border: `1px solid ${border2}`,
               borderRadius: 12, overflow: "hidden", cursor: "pointer",
               transition: "transform .2s, border-color .2s, box-shadow .2s",
-              minWidth: 320,
+              minWidth: 380,
               display: "flex", flexDirection: "column"
             }}
               onMouseEnter={e => {
@@ -73,23 +73,23 @@ export default function Courses() {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                padding: "24px 20px 24px 45%"
+                padding: "32px 24px 32px 45%"
               }}>
-                <h3 style={{ fontSize: 14, fontWeight: 700, color: white, margin: "0 0 4px", lineHeight: 1.3 }}>
+                <h3 style={{ fontSize: 20, fontWeight: 700, color: white, margin: "0 0 6px", lineHeight: 1.3 }}>
                   {title}
                 </h3>
-                <div style={{ fontSize: 11, color: muted, marginBottom: 16 }}>
+                <div style={{ fontSize: 15, color: white, opacity: 0.8, marginBottom: 20 }}>
                   {level}
                 </div>
-                <div style={{ display: "flex", gap: 8, marginBottom: 16, fontSize: 10, color: white, fontWeight: 600 }}>
-                  <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <div style={{ display: "flex", gap: 12, marginBottom: 20, fontSize: 13, color: white, fontWeight: 600 }}>
+                  <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ color: "#ffb800" }}>⏱</span> {weeks} Weeks
                   </span>
-                  <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                  <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ color: neon }}>📜</span> Certificate
                   </span>
                 </div>
-                <Btn style={{ width: "100%", justifyContent: "center", padding: "8px 0", fontSize: 12, fontWeight: 700, background: neon, color: "#040e1a", borderColor: neon }}>
+                <Btn style={{ width: "100%", justifyContent: "center", padding: "10px 0", fontSize: 14, fontWeight: 700, background: neon, color: "#040e1a", borderColor: neon }}>
                   Enroll Now
                 </Btn>
               </div>

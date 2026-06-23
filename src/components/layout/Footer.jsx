@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Btn } from "../ui/UI";
 import { bg, card, card2, border, border2, neon, cyan, white, muted, textCol } from "../../styles/tokens";
 
+import { FaXTwitter, FaLinkedinIn, FaYoutube, FaInstagram, FaFacebookF } from "react-icons/fa6";
+import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+
 const FOOTER_COLS = [
   { head: "TRAINING",  links: ["All Courses","Workshops","Certifications","Internships","Student Portal"] },
   { head: "SERVICES",  links: ["VAPT","Digital Forensics","Incident Response","Security Audits","Consulting"] },
@@ -10,16 +13,17 @@ const FOOTER_COLS = [
 ];
 
 const SOCIAL = [
-  { icon: "𝕏",  label: "Twitter" },
-  { icon: "in", label: "LinkedIn" },
-  { icon: "▶",  label: "YouTube" },
-  { icon: "📷", label: "Instagram" },
+  { icon: <FaXTwitter size={15} />,  label: "Twitter" },
+  { icon: <FaLinkedinIn size={15} />, label: "LinkedIn" },
+  { icon: <FaYoutube size={15} />,  label: "YouTube" },
+  { icon: <FaInstagram size={15} />, label: "Instagram" },
+  { icon: <FaFacebookF size={15} />, label: "Facebook" },
 ];
 
 const CONTACT_INFO = [
-  ["✉️", "hello@skillnetics.com"],
-  ["📞", "Phone Number"],
-  ["📍", "Gujarat, India"],
+  [<MdEmail size={16} />, "halotrace.enquiry@gmail.com"],
+  [<MdPhone size={16} />, ""],
+  [<MdLocationOn size={16} />, "Gujarat, India"],
 ];
 
 const LEGAL_LINKS = ["Privacy Policy", "Terms & Conditions", "Security Policy", "Responsible Disclosure"];

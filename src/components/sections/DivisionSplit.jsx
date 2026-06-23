@@ -1,5 +1,5 @@
 import { Btn, Check } from "../ui/UI";
-import { bg, card, border2, neon, cyan, muted, textCol } from "../../styles/tokens";
+import { bg, card, border2, neon, cyan, muted, textCol, pink, orange, white } from "../../styles/tokens";
 
 const SKILL_FEATURES = [
   "Industry-Aligned Courses", "Workshops & Bootcamps",
@@ -17,19 +17,22 @@ function DivisionCard({ children, accentColor }) {
   return (
     <div style={{
       background: "rgba(4, 10, 18, 0.4)", backdropFilter: "blur(12px)",
-      border: `1px solid transparent`,
+      border: `1px solid ${accentColor}80`,
       borderRadius: 14, overflow: "hidden", position: "relative",
-      transition: "border-color .3s, box-shadow .3s",
+      transition: "border-color .3s, box-shadow .3s, transform .3s",
       minHeight: 340,
-      display: "flex", flexDirection: "column"
+      display: "flex", flexDirection: "column",
+      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)"
     }}
       onMouseEnter={e => {
         e.currentTarget.style.borderColor = accentColor;
-        e.currentTarget.style.boxShadow = `0 0 24px ${accentColor}12`;
+        e.currentTarget.style.boxShadow = `0 12px 40px ${accentColor}33`;
+        e.currentTarget.style.transform = "translateY(-2px)";
       }}
       onMouseLeave={e => {
-        e.currentTarget.style.borderColor = border2;
-        e.currentTarget.style.boxShadow = "none";
+        e.currentTarget.style.borderColor = `${accentColor}80`;
+        e.currentTarget.style.boxShadow = "0 8px 32px rgba(0, 0, 0, 0.3)";
+        e.currentTarget.style.transform = "none";
       }}>
       {children}
     </div>
@@ -47,8 +50,7 @@ export default function DivisionSplit() {
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
         gap: 22,
-        width: "100%",
-        background: `url('/halotrace-skillnetics background.png') center/104% 104% no-repeat`
+        width: "100%"
       }}>
 
         {/* CENTER X OVERLAY */}
@@ -62,19 +64,28 @@ export default function DivisionSplit() {
         </div>
 
         {/* SKILLNETICS */}
-        <DivisionCard accentColor={neon}>
+        <DivisionCard accentColor={cyan}>
           <div className="division-card-inner" style={{
             display: "grid", gridTemplateColumns: "1fr 1.5fr", height: "100%",
-            background: `linear-gradient(135deg, rgba(5,20,16,0.6) 0%, rgba(6,17,26,0.2) 100%)`
+            background: `linear-gradient(135deg, ${cyan}1a 0%, rgba(6,17,26,0.2) 100%), linear-gradient(rgba(4, 10, 18, 0.6), rgba(4, 10, 18, 0.6)), url('/halotrace-skillnetics%20background%201.png')`,
+            backgroundPosition: "left center",
+            backgroundSize: "205% 100%",
+            backgroundRepeat: "no-repeat"
           }}>
-            <div style={{
-              backgroundImage: "url('/hacker.png')",
+            <div className="skillnetics-img" style={{
+              backgroundImage: "url('/skillnetics 1.png')",
               backgroundSize: "cover", backgroundPosition: "center",
               WebkitMaskImage: "linear-gradient(to right, black 60%, transparent 100%)",
               maskImage: "linear-gradient(to right, black 60%, transparent 100%)"
             }} />
             <div style={{ padding: "40px 30px 40px 0", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <div style={{ fontSize: 24, fontWeight: 900, color: neon, letterSpacing: 1, marginBottom: 4 }}>
+              <div style={{
+                fontSize: 24, fontWeight: 900, letterSpacing: 1, marginBottom: 4,
+                background: `linear-gradient(90deg, ${cyan}, #0077ff)`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                display: "inline-block"
+              }}>
                 SKILLNETICS
               </div>
               <div style={{ fontSize: 14, color: muted, marginBottom: 14, fontWeight: 500 }}>Learn. Practice. Excel.</div>
@@ -82,23 +93,41 @@ export default function DivisionSplit() {
                 Comprehensive cybersecurity training programs<br />designed for beginners to professionals.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px 14px", marginBottom: 26 }}>
-                {SKILL_FEATURES.map(f => <Check key={f} text={f} color={neon} />)}
+                {SKILL_FEATURES.map(f => <Check key={f} text={f} color={cyan} />)}
               </div>
               <div>
-                <Btn style={{ padding: "12px 24px", fontSize: 13.5 }}>Explore Training Programs →</Btn>
+                <button style={{
+                  padding: "12px 24px", fontSize: 13.5, fontWeight: 700,
+                  background: `linear-gradient(90deg, ${cyan}, #0077ff)`, color: "#040e1a",
+                  border: "none", borderRadius: 6, cursor: "pointer", transition: "opacity .2s"
+                }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = ".85"}
+                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                >
+                  Explore Training Programs →
+                </button>
               </div>
             </div>
           </div>
         </DivisionCard>
 
         {/* HALOTRACE */}
-        <DivisionCard accentColor={cyan}>
+        <DivisionCard accentColor={orange}>
           <div className="division-card-inner-reverse" style={{
             display: "grid", gridTemplateColumns: "1.5fr 1fr", height: "100%",
-            background: `linear-gradient(135deg, rgba(6,17,26,0.2) 0%, rgba(4,10,18,0.6) 100%)`
+            background: `linear-gradient(135deg, rgba(6,17,26,0.2) 0%, ${orange}1a 100%), linear-gradient(rgba(4, 10, 18, 0.6), rgba(4, 10, 18, 0.6)), url('/halotrace-skillnetics%20background%201.png')`,
+            backgroundPosition: "right center",
+            backgroundSize: "205% 100%",
+            backgroundRepeat: "no-repeat"
           }}>
             <div style={{ padding: "40px 0 40px 40px", display: "flex", flexDirection: "column", justifyContent: "center", zIndex: 2 }}>
-              <div style={{ fontSize: 24, fontWeight: 900, color: cyan, letterSpacing: 1, marginBottom: 4 }}>
+              <div style={{
+                fontSize: 24, fontWeight: 900, letterSpacing: 1, marginBottom: 4,
+                background: `linear-gradient(90deg, ${orange}, #e65c00)`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                display: "inline-block"
+              }}>
                 HALOTRACE
               </div>
               <div style={{ fontSize: 14, color: muted, marginBottom: 14, fontWeight: 500 }}>Protect. Detect. Respond.</div>
@@ -106,20 +135,25 @@ export default function DivisionSplit() {
                 End-to-end cybersecurity services for<br />businesses of all sizes.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px 14px", marginBottom: 26 }}>
-                {HALO_FEATURES.map(f => <Check key={f} text={f} color={cyan} />)}
+                {HALO_FEATURES.map(f => <Check key={f} text={f} color={orange} />)}
               </div>
               <div>
-                <Btn style={{
-                  padding: "12px 24px", fontSize: 13.5,
-                  background: cyan, color: "#040e1a", borderColor: cyan
-                }}>
+                <button style={{
+                  padding: "12px 24px", fontSize: 13.5, fontWeight: 700,
+                  background: `linear-gradient(90deg, ${orange}, #e65c00)`, color: "#040e1a",
+                  border: "none", borderRadius: 6, cursor: "pointer", transition: "opacity .2s"
+                }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = ".85"}
+                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                >
                   Request Security Assessment →
-                </Btn>
+                </button>
               </div>
             </div>
             <div style={{
-              backgroundImage: "url('/shield.png')",
+              backgroundImage: "url('/halotrace%20logo%20with%20shield.png')",
               backgroundSize: "cover", backgroundPosition: "center",
+              filter: "brightness(0.95)",
               WebkitMaskImage: "linear-gradient(to left, black 60%, transparent 100%)",
               maskImage: "linear-gradient(to left, black 60%, transparent 100%)",
               zIndex: 1

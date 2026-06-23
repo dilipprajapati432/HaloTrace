@@ -4,8 +4,8 @@ export default function CTABanner() {
   return (
     <section className="section-container" style={{ padding: "0 56px 60px" }}>
       <div className="cta-container" style={{
-        backgroundColor: "rgba(4, 10, 18, 0.4)",
-        border: "1px solid rgba(0, 255, 135, 0.80)",
+        backgroundColor: "rgba(4, 10, 18, 0.8)",
+        border: "1px solid rgba(0, 255, 135, 0.8)",
         borderRadius: 12,
         display: "flex",
         alignItems: "center",

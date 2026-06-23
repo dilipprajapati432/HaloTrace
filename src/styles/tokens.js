@@ -11,3 +11,4 @@ export const muted   = "#6a8da8";
 export const textCol = "#c8e0f0";
 export const red     = "#ff4040";
 export const orange  = "#ff9d3a";
+export const pink    = "#ff33a1";

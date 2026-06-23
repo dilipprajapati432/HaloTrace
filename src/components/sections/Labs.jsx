@@ -1,11 +1,11 @@
 import { bg2, card, border, border2, neon, cyan, white, textCol } from "../../styles/tokens";
 
 const LABS = [
-  { name: "Network Scanning",    bgImg: "/network%20malware.png", bgSize: "300% 100%", bgPos: "0% center" },
-  { name: "Wireshark Analysis",  bgImg: "/network%20malware.png", bgSize: "300% 100%", bgPos: "50% center" },
-  { name: "Malware Analysis",    bgImg: "/network%20malware.png", bgSize: "300% 100%", bgPos: "100% center" },
+  { name: "Network Scanning", bgImg: "/network.png", bgSize: "100% 100%", bgPos: "center" },
+  { name: "Wireshark Analysis", bgImg: "/wireshark_analysis.png", bgSize: "100% 100%", bgPos: "center" },
+  { name: "Malware Analysis", bgImg: "/malware_cropped.png", bgSize: "100% 100%", bgPos: "center" },
   { name: "OSINT Investigation", bgImg: "/OSINT%20and%20SIEM.png", bgSize: "200% 100%", bgPos: "0% center" },
-  { name: "SIEM Dashboard",      bgImg: "/OSINT%20and%20SIEM.png", bgSize: "200% 100%", bgPos: "100% center" },
+  { name: "SIEM Dashboard", bgImg: "/OSINT%20and%20SIEM.png", bgSize: "200% 100%", bgPos: "100% center" },
 ];
 
 export default function Labs() {
@@ -39,33 +39,37 @@ export default function Labs() {
           scrollbarWidth: "thin",
           scrollbarColor: `${border2} transparent`
         }}>
-        {LABS.map(({ name, bgImg, bgSize, bgPos }, idx) => (
-          <div key={name} style={{
-            background: card, border: `1px solid ${border2}`,
-            borderRadius: 12, overflow: "hidden", cursor: "pointer",
-            transition: "border-color .18s, transform .18s, box-shadow .18s",
-            minWidth: 220
-          }}
-          onMouseEnter={e => {
-            e.currentTarget.style.borderColor = cyan;
-            e.currentTarget.style.transform = "translateY(-4px)";
-            e.currentTarget.style.boxShadow = `0 6px 24px ${cyan}14`;
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.borderColor = border2;
-            e.currentTarget.style.transform = "none";
-            e.currentTarget.style.boxShadow = "none";
-          }}>
-            <div style={{ height: 136, background: `url('${bgImg}') ${bgPos} / ${bgSize} no-repeat`,
-              borderBottom: `1px solid ${border}`, position: "relative" }}>
-              <div style={{ position: "absolute", inset: 0,
-                background: "repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,204,255,.025) 3px,rgba(0,204,255,.025) 4px)" }} />
+          {LABS.map(({ name, bgImg, bgSize, bgPos }, idx) => (
+            <div key={name} style={{
+              background: card, border: `1px solid ${border2}`,
+              borderRadius: 12, overflow: "hidden", cursor: "pointer",
+              transition: "border-color .18s, transform .18s, box-shadow .18s",
+              minWidth: 320
+            }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = cyan;
+                e.currentTarget.style.transform = "translateY(-4px)";
+                e.currentTarget.style.boxShadow = `0 6px 24px ${cyan}14`;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = border2;
+                e.currentTarget.style.transform = "none";
+                e.currentTarget.style.boxShadow = "none";
+              }}>
+              <div style={{
+                height: 190, background: `url('${bgImg}') ${bgPos} / ${bgSize} no-repeat`,
+                borderBottom: `1px solid ${border}`, position: "relative"
+              }}>
+                <div style={{
+                  position: "absolute", inset: 0,
+                  background: "repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,204,255,.025) 3px,rgba(0,204,255,.025) 4px)"
+                }} />
+              </div>
+              <div style={{ padding: "20px 24px", fontSize: 16, fontWeight: 700, color: white }}>
+                {name}
+              </div>
             </div>
-            <div style={{ padding: "12px 14px", fontSize: 12.5, fontWeight: 600, color: textCol }}>
-              {name}
-            </div>
-          </div>
-        ))}
+          ))}
         </div>
       </div>
     </section>

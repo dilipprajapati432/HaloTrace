@@ -1,61 +1,68 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Btn } from "../ui/UI";
 import { bg, bg2, card, border, border2, neon, cyan, white, muted, textCol } from "../../styles/tokens";
 
 const navItems = [
-  { label: "Home", active: true },
-  { label: "Training", subLinks: ["All Courses", "Workshops", "Certifications", "Internships", "Student Portal"] },
-  { label: "Services", subLinks: ["VAPT", "Digital Forensics", "Incident Response", "Security Audits", "Consulting"] },
-  { label: "Courses" },
-  { label: "Labs" },
-  { label: "Resources", subLinks: ["Tools", "Cybersecurity News", "Free Resources", "Glossary", "FAQ"] },
-  { label: "About" },
-  { label: "Contact" },
+  { label: "Home", path: "/" },
+  { label: "Training", path: "#", subLinks: ["All Courses", "Workshops", "Certifications", "Internships", "Student Portal"] },
+  { label: "Services", path: "#", subLinks: ["VAPT", "Digital Forensics", "Incident Response", "Security Audits", "Consulting"] },
+  { label: "Courses", path: "#" },
+  { label: "Labs", path: "#" },
+  { label: "Resources", path: "#", subLinks: ["Tools", "Cybersecurity News", "Free Resources", "Glossary", "FAQ"] },
+  { label: "About", path: "/about" },
+  { label: "Contact", path: "#" },
 ];
 
-function NavItem({ item }) {
+function NavItem({ item, currentPath }) {
   const [hovered, setHovered] = useState(false);
-  const { label, active, subLinks } = item;
+  const { label, path, subLinks } = item;
+  
+  const isActive = currentPath === path && path !== "#";
 
   return (
-    <div 
+    <div
       style={{ position: "relative" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <a href="#" style={{
-        color: active ? white : (hovered ? white : textCol),
+      <Link to={path || "#"} style={{
+        color: isActive ? white : (hovered ? white : textCol),
         textDecoration: "none",
         fontSize: 14,
-        fontWeight: active ? 700 : 500,
+        fontWeight: isActive ? 700 : 500,
         padding: "6px 10px",
         display: "inline-flex", alignItems: "center", gap: 4,
         transition: "color .15s",
       }}>
         {label}
-        {subLinks && <span style={{ fontSize: 10, color: muted, transform: "translateY(1px)" }}>∨</span>}
-      </a>
-      
+      </Link>
+
       {subLinks && hovered && (
         <div style={{
-          position: "absolute", top: "100%", left: 0, marginTop: "8px",
-          background: card, border: `1px solid ${border2}`,
-          borderRadius: 8, padding: "8px 0",
-          minWidth: 180, display: "flex", flexDirection: "column",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
-          zIndex: 1000
+          position: "absolute", top: "100%", left: 0, paddingTop: "8px", zIndex: 1000
         }}>
-          {subLinks.map(sub => (
-            <a key={sub} href="#" style={{
-              color: textCol, textDecoration: "none",
-              padding: "10px 16px", fontSize: 13, fontWeight: 500,
-              transition: "background .15s, color .15s"
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = border2; e.currentTarget.style.color = neon; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = textCol; }}>
-              {sub}
-            </a>
-          ))}
+          <div style={{
+            background: "rgba(4, 10, 18, 0.95)", 
+            backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)",
+            border: `1px solid ${border2}`,
+            borderTop: `2px solid ${cyan}`,
+            borderRadius: "0 0 8px 8px", padding: "8px 0",
+            minWidth: 180, display: "flex", flexDirection: "column",
+            boxShadow: `0 20px 40px rgba(0,0,0,0.8), 0 0 20px ${cyan}1a`,
+          }}>
+            {subLinks.map(sub => (
+              <Link key={sub} to="#" style={{
+                color: textCol, textDecoration: "none",
+                padding: "10px 16px", fontSize: 13, fontWeight: 500,
+                transition: "background .15s, color .15s"
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background = border2; e.currentTarget.style.color = neon; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = textCol; }}>
+                {sub}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -65,6 +72,7 @@ function NavItem({ item }) {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 8);
@@ -105,7 +113,7 @@ export default function Navbar() {
       {/* Nav links */}
       <div className={`mobile-nav-links ${menuOpen ? 'open' : ''}`} style={{ display: "flex", alignItems: "center", gap: 12 }}>
         {navItems.map((item) => (
-          <NavItem key={item.label} item={item} />
+          <NavItem key={item.label} item={item} currentPath={location.pathname} />
         ))}
       </div>
 

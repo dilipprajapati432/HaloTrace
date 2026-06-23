@@ -23,7 +23,7 @@ export default function TrustBar() {
   return (
     <div className="trust-bar-container" style={{
       display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16,
-      padding: "0 56px", position: "relative", zIndex: 10, marginTop: -30
+      padding: "0 56px", position: "relative", zIndex: 10, marginTop: -10
     }}>
       {STATS.map(({ icon, value, label, color }) => (
         <div key={label} className="trust-bar-card" style={{

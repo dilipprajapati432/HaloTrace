@@ -293,4 +293,33 @@
   .threat-map-footer {
     text-align: center !important;
   }
+
+  .division-split-x {
+    display: none !important;
+  }
+
+  .skillnetics-img {
+    background-size: auto 110% !important;
+    background-position: center !important;
+  }
+}
+
+/* Very Small Mobile Styles */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px !important;
+  }
+
+  .section-container {
+    padding: 30px 16px !important;
+  }
+
+  .course-card-wrapper {
+    min-width: 85vw !important;
+  }
+
+  .division-card-inner>div:first-child,
+  .division-card-inner-reverse>div:last-child {
+    height: 200px !important;
+  }
 }
