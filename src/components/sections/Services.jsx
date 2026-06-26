@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { bg2, card, border2, neon, cyan, white, muted, textCol } from "../../styles/tokens";
 
 const SERVICES = [
@@ -34,13 +36,50 @@ const SERVICES = [
     icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={neon} strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="4" /><line x1="21.17" y1="8" x2="12" y2="8" /><line x1="3.95" y1="6.06" x2="8.54" y2="14" /><line x1="10.88" y1="21.94" x2="15.46" y2="14" /></svg>,
     name: "Security\nConsulting"
   },
+  {
+    icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={neon} strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>,
+    name: "Red Teaming\nOperations"
+  },
+  {
+    icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={neon} strokeWidth="1.5"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>,
+    name: "Source Code\nReview"
+  },
+  {
+    icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={neon} strokeWidth="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
+    name: "Social Engineering\nSimulations"
+  },
+  {
+    icon: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={neon} strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><path d="M12 18l2 2 4-4" /></svg>,
+    name: "Compliance\n& Auditing"
+  }
 ];
 
 export default function Services() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleServices = showAll ? SERVICES : SERVICES.slice(0, 8);
+  const navigate = useNavigate();
+
+  const handleCardClick = (name) => {
+    let hash = "";
+    if (name.includes("VAPT")) hash = "vapt";
+    else if (name.includes("Web Security")) hash = "web-security";
+    else if (name.includes("Mobile App")) hash = "mobile-security";
+    else if (name.includes("API Security")) hash = "web-security";
+    else if (name.includes("Digital")) hash = "dfir";
+    else if (name.includes("Incident")) hash = "dfir";
+    else if (name.includes("Cloud")) hash = "cloud-security";
+    else if (name.includes("Consulting")) hash = "consulting";
+    else if (name.includes("Red Teaming")) hash = "network-audits";
+    else if (name.includes("Source Code")) hash = "web-security";
+    else if (name.includes("Compliance")) hash = "consulting";
+
+    navigate(hash ? `/services#${hash}` : "/services");
+  };
+
   return (
     <section className="section-container" style={{ padding: "60px 56px", background: bg2 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 25 }}>
-        <h2 style={{ textAlign: "center", fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4, width: "100%" }}>
+        <h2 style={{ textAlign: "center", fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4, width: "100%", textTransform: "uppercase" }}>
           OUR SECURITY <span style={{ color: neon }}>SERVICES</span>
         </h2>
       </div>
@@ -64,8 +103,8 @@ export default function Services() {
           scrollbarWidth: "none", /* Hide scrollbar for cleaner look if it wraps */
           WebkitOverflowScrolling: "touch"
         }}>
-          {SERVICES.map(({ icon, name, sub }) => (
-            <div key={name} style={{
+          {visibleServices.map(({ icon, name, sub }) => (
+            <div key={name} onClick={() => handleCardClick(name)} style={{
               background: card,
               border: `1px solid ${border2}`,
               borderRadius: 8,
@@ -106,11 +145,11 @@ export default function Services() {
 
         {/* Link at the bottom */}
         <div style={{ textAlign: "center", marginTop: 28 }}>
-          <a href="#" style={{ color: cyan, fontSize: 13, textDecoration: "none", fontWeight: 600 }}
+          <button onClick={() => setShowAll(!showAll)} style={{ background: "none", border: "none", cursor: "pointer", color: cyan, fontSize: 13, textDecoration: "none", fontWeight: 600 }}
             onMouseEnter={e => e.currentTarget.style.color = neon}
             onMouseLeave={e => e.currentTarget.style.color = cyan}>
-            View All Services →
-          </a>
+            {showAll ? "Show Less ↑" : "View All Services →"}
+          </button>
         </div>
       </div>
     </section>

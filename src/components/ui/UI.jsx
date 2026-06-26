@@ -20,9 +20,9 @@ export function Btn({ children, variant = "solid", className = "", style: extra 
     whiteSpace: "nowrap",
   };
   const variants = {
-    solid:   { background: neon, color: "#040e1a", borderColor: neon },
+    solid: { background: neon, color: "#040e1a", borderColor: neon },
     outline: { background: "transparent", color: cyan, borderColor: cyan },
-    ghost:   { background: `${neon}18`, color: neon, borderColor: `${neon}44` },
+    ghost: { background: `${neon}18`, color: neon, borderColor: `${neon}44` },
   };
   const v = variants[variant] || variants.solid;
   return (
@@ -48,8 +48,10 @@ export function Check({ text, color = neon }) {
 export function DotBullet({ text, color = cyan }) {
   return (
     <div style={{ display: "flex", alignItems: "flex-start", gap: 7, fontSize: 12.5, color: "#ffffff" }}>
-      <span style={{ width: 7, height: 7, borderRadius: "50%", background: color,
-        flexShrink: 0, display: "inline-block", marginTop: 4 }} />
+      <span style={{
+        width: 7, height: 7, borderRadius: "50%", background: color,
+        flexShrink: 0, display: "inline-block", marginTop: 4
+      }} />
       <span>{text}</span>
     </div>
   );

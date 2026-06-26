@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { bg2, card, border, border2, neon, cyan, white, textCol } from "../../styles/tokens";
 
 const LABS = [
@@ -12,14 +13,14 @@ export default function Labs() {
   return (
     <section className="section-container" style={{ padding: "60px 56px", background: bg2 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 26 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4 }}>
+        <h2 style={{ fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4, textTransform: "uppercase" }}>
           CYBER LABS &amp; <span style={{ color: neon }}>DEMONSTRATIONS</span>
         </h2>
-        <a href="#" style={{ color: cyan, fontSize: 13, textDecoration: "none", fontWeight: 600 }}
+        <Link to="/labs" style={{ color: cyan, fontSize: 13, textDecoration: "none", fontWeight: 600 }}
           onMouseEnter={e => e.currentTarget.style.color = neon}
           onMouseLeave={e => e.currentTarget.style.color = cyan}>
-          Explore All Labs →
-        </a>
+          View All Labs →
+        </Link>
       </div>
 
       <div style={{

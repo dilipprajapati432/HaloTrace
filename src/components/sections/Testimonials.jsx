@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Tag } from "../ui/UI";
 import { card, card2, border2, neon, cyan, white, muted, textCol } from "../../styles/tokens";
 
@@ -35,14 +36,14 @@ export default function Testimonials() {
       display: "flex", flexDirection: "column", height: "100%", boxSizing: "border-box"
     }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 22 }}>
-        <h2 style={{ fontSize: 17, fontWeight: 800, color: white, margin: 0 }}>
+        <h2 style={{ fontSize: 17, fontWeight: 800, color: white, margin: 0, textTransform: "uppercase" }}>
           STUDENT <span style={{ color: neon }}>SUCCESS STORIES</span>
         </h2>
-        <a href="#" style={{ color: cyan, fontSize: 12, textDecoration: "none", fontWeight: 600 }}
+        <Link to="/casestudies" style={{ color: cyan, fontSize: 12, textDecoration: "none", fontWeight: 600 }}
           onMouseEnter={e => e.currentTarget.style.color = neon}
           onMouseLeave={e => e.currentTarget.style.color = cyan}>
           View All →
-        </a>
+        </Link>
       </div>
 
       <div className="testimonial-card" style={{ background: card, border: `1px solid ${border2}`, borderRadius: 12, padding: "24px", height: 260, display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -62,10 +63,10 @@ export default function Testimonials() {
               <div style={{ color: cyan, fontSize: 12.5, fontWeight: 600, marginBottom: 16 }}>{t.role}</div>
               <p style={{ fontSize: 13, color: textCol, lineHeight: 1.72, margin: "0 0 16px", maxWidth: "90%" }}>{t.text}</p>
               <div style={{ display: "flex", gap: 12, fontSize: 14 }}>
-                <a href="#" style={{ color: cyan, textDecoration: "none", fontWeight: 700, transition: "color .15s" }}
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: cyan, textDecoration: "none", fontWeight: 700, transition: "color .15s" }}
                   onMouseEnter={e => e.currentTarget.style.color = neon}
                   onMouseLeave={e => e.currentTarget.style.color = cyan}>in</a>
-                <a href="#" style={{ color: cyan, textDecoration: "none", transition: "color .15s", fontWeight: 700 }}
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" style={{ color: cyan, textDecoration: "none", transition: "color .15s", fontWeight: 700 }}
                   onMouseEnter={e => e.currentTarget.style.color = neon}
                   onMouseLeave={e => e.currentTarget.style.color = cyan}>🔗</a>
               </div>

@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { bg2, bg, neon, cyan, white, muted, card, border2, orange, textCol } from "../styles/tokens";
 import Partners from "../components/sections/Partners";
@@ -36,19 +37,25 @@ const TEAM = [
 ];
 
 export default function About() {
+  const navigate = useNavigate();
   return (
     <main>
+      <Helmet>
+        <title>About Us | Skillnetics × HaloTrace</title>
+        <meta name="description" content="Learn about our mission to build cybersecurity professionals and protect organizations from a single unified platform." />
+      </Helmet>
+
       {/* 1. PAGE HERO */}
       <section style={{
         minHeight: "50vh", position: "relative", overflow: "hidden",
         marginTop: "72px",
-        background: `linear-gradient(175deg, ${bg2}33 0%, ${bg}66 100%), url('/hero-bg%204.png') center 30% / cover no-repeat`,
+        background: `linear-gradient(175deg, ${bg2} 0%, ${bg} 100%)`,
         display: "flex", flexDirection: "column", justifyContent: "center",
         padding: "60px 56px",
       }}>
         <div style={{ position: "relative", zIndex: 1, maxWidth: 800 }}>
           <div style={{ fontSize: 13, color: muted, marginBottom: 16, display: "flex", gap: 8, alignItems: "center", fontWeight: 600 }}>
-            <Link to="/" style={{ color: muted, textDecoration: "none", transition: "color .2s" }} 
+            <Link to="/" style={{ color: muted, textDecoration: "none", transition: "color .2s" }}
               onMouseEnter={e => e.currentTarget.style.color = white}
               onMouseLeave={e => e.currentTarget.style.color = muted}>
               Home
@@ -57,10 +64,10 @@ export default function About() {
             <span style={{ color: neon }}>About Us</span>
           </div>
           <h1 style={{
-            fontFamily: "Orbitron, sans-serif", fontSize: 46, fontWeight: 900, color: white,
-            margin: "0 0 16px", letterSpacing: -0.5
+            fontSize: 46, fontWeight: 900, color: white,
+            margin: "0 0 16px", letterSpacing: -0.5, textTransform: "uppercase"
           }}>
-            About Skillnetics × HaloTrace
+            ABOUT <span style={{ color: cyan }}>SKILLNETICS</span> <span style={{ color: muted, fontWeight: 300, margin: "0 4px" }}>×</span> <span style={{ color: orange }}>HALOTRACE</span>
           </h1>
           <p style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, margin: 0, maxWidth: 600 }}>
             We build cybersecurity professionals and protect organizations — from a single unified platform.
@@ -71,7 +78,7 @@ export default function About() {
       {/* 2. MISSION & VISION */}
       <section className="section-container" style={{ padding: "80px 56px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 30 }}>
-          
+
           {/* Mission Card */}
           <div style={{
             background: "rgba(4, 10, 18, 0.4)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
@@ -79,8 +86,8 @@ export default function About() {
             padding: 40, boxShadow: `0 20px 40px rgba(0,0,0,0.4), inset 0 0 40px ${neon}05`, position: "relative", overflow: "hidden",
             transition: "transform 0.3s ease", cursor: "default"
           }}
-          onMouseEnter={e => e.currentTarget.style.transform = "translateY(-4px)"}
-          onMouseLeave={e => e.currentTarget.style.transform = "none"}>
+            onMouseEnter={e => e.currentTarget.style.transform = "translateY(-4px)"}
+            onMouseLeave={e => e.currentTarget.style.transform = "none"}>
             <div style={{ position: "absolute", top: -50, right: -50, width: 200, height: 200, background: neon, filter: "blur(80px)", opacity: 0.15 }} />
             <Tag color={neon}>OUR MISSION</Tag>
             <p style={{ fontSize: 18, color: white, lineHeight: 1.6, marginTop: 24, fontWeight: 500 }}>
@@ -95,8 +102,8 @@ export default function About() {
             padding: 40, boxShadow: `0 20px 40px rgba(0,0,0,0.4), inset 0 0 40px ${cyan}05`, position: "relative", overflow: "hidden",
             transition: "transform 0.3s ease", cursor: "default"
           }}
-          onMouseEnter={e => e.currentTarget.style.transform = "translateY(-4px)"}
-          onMouseLeave={e => e.currentTarget.style.transform = "none"}>
+            onMouseEnter={e => e.currentTarget.style.transform = "translateY(-4px)"}
+            onMouseLeave={e => e.currentTarget.style.transform = "none"}>
             <div style={{ position: "absolute", top: -50, right: -50, width: 200, height: 200, background: cyan, filter: "blur(80px)", opacity: 0.15 }} />
             <Tag color={cyan}>OUR VISION</Tag>
             <p style={{ fontSize: 18, color: white, lineHeight: 1.6, marginTop: 24, fontWeight: 500 }}>
@@ -110,7 +117,7 @@ export default function About() {
       {/* 3. COMPANY STORY SECTION */}
       <section className="section-container" style={{ padding: "0 56px 80px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 60, alignItems: "center" }}>
-          
+
           {/* Left: Text */}
           <div>
             <h2 style={{ fontSize: 32, fontWeight: 900, color: white, marginBottom: 24 }}>The Story Behind the Shield</h2>
@@ -131,14 +138,14 @@ export default function About() {
             <div style={{ display: "flex", flexDirection: "column", gap: 24, position: "relative" }}>
               {/* Vertical line */}
               <div style={{ position: "absolute", left: 7, top: 10, bottom: 0, width: 2, background: `linear-gradient(to bottom, ${neon}, ${cyan}, transparent)` }} />
-              
+
               {TIMELINE.map((item, i) => (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
-                  key={i} 
+                  key={i}
                   style={{ display: "flex", gap: 20, position: "relative", zIndex: 2 }}
                 >
                   <div style={{ width: 16, height: 16, borderRadius: "50%", background: bg, border: `3px solid ${neon}`, flexShrink: 0, marginTop: 4 }} />
@@ -159,9 +166,9 @@ export default function About() {
         <div style={{
           borderLeft: `4px solid ${neon}`, paddingLeft: 40, maxWidth: 900, margin: "0 auto"
         }}>
-          <h3 style={{ 
-            fontSize: 28, fontStyle: "italic", fontWeight: 300, color: white, 
-            lineHeight: 1.5, margin: "0 0 24px" 
+          <h3 style={{
+            fontSize: 28, fontStyle: "italic", fontWeight: 300, color: white,
+            lineHeight: 1.5, margin: "0 0 24px"
           }}>
             "We saw too many organizations getting breached from preventable vulnerabilities, and too many talented students unable to find quality cybersecurity education. We decided to solve both problems."
           </h3>
@@ -184,7 +191,7 @@ export default function About() {
           {/* Skillnetics Method */}
           <div>
             <h3 style={{ fontSize: 20, fontWeight: 800, color: cyan, marginBottom: 24, display: "flex", alignItems: "center", gap: 12 }}>
-              <div style={{ width: 12, height: 12, borderRadius: "50%", background: cyan }}/>
+              <div style={{ width: 12, height: 12, borderRadius: "50%", background: cyan }} />
               Skillnetics Training Flow
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -193,16 +200,16 @@ export default function About() {
                   background: "rgba(4, 10, 18, 0.4)", border: `1px solid ${border2}`, borderRadius: 12, padding: 20,
                   display: "flex", gap: 20, alignItems: "center", cursor: "pointer", transition: "all .3s ease"
                 }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.transform = "translateX(8px)";
-                  e.currentTarget.style.borderColor = cyan;
-                  e.currentTarget.style.boxShadow = `0 4px 20px ${cyan}1a`;
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.transform = "none";
-                  e.currentTarget.style.borderColor = border2;
-                  e.currentTarget.style.boxShadow = "none";
-                }}>
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = "translateX(8px)";
+                    e.currentTarget.style.borderColor = cyan;
+                    e.currentTarget.style.boxShadow = `0 4px 20px ${cyan}1a`;
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = "none";
+                    e.currentTarget.style.borderColor = border2;
+                    e.currentTarget.style.boxShadow = "none";
+                  }}>
                   <div style={{ fontSize: 24, fontWeight: 900, color: cyan, opacity: 0.5 }}>{step.step}</div>
                   <div>
                     <div style={{ fontSize: 16, fontWeight: 700, color: white, marginBottom: 4 }}>{step.title}</div>
@@ -216,7 +223,7 @@ export default function About() {
           {/* HaloTrace Method */}
           <div>
             <h3 style={{ fontSize: 20, fontWeight: 800, color: orange, marginBottom: 24, display: "flex", alignItems: "center", gap: 12 }}>
-              <div style={{ width: 12, height: 12, borderRadius: "50%", background: orange }}/>
+              <div style={{ width: 12, height: 12, borderRadius: "50%", background: orange }} />
               HaloTrace Security Flow
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -225,16 +232,16 @@ export default function About() {
                   background: "rgba(4, 10, 18, 0.4)", border: `1px solid ${border2}`, borderRadius: 12, padding: 20,
                   display: "flex", gap: 20, alignItems: "center", cursor: "pointer", transition: "all .3s ease"
                 }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.transform = "translateX(8px)";
-                  e.currentTarget.style.borderColor = orange;
-                  e.currentTarget.style.boxShadow = `0 4px 20px ${orange}1a`;
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.transform = "none";
-                  e.currentTarget.style.borderColor = border2;
-                  e.currentTarget.style.boxShadow = "none";
-                }}>
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = "translateX(8px)";
+                    e.currentTarget.style.borderColor = orange;
+                    e.currentTarget.style.boxShadow = `0 4px 20px ${orange}1a`;
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = "none";
+                    e.currentTarget.style.borderColor = border2;
+                    e.currentTarget.style.boxShadow = "none";
+                  }}>
                   <div style={{ fontSize: 24, fontWeight: 900, color: orange, opacity: 0.5 }}>{step.step}</div>
                   <div>
                     <div style={{ fontSize: 16, fontWeight: 700, color: white, marginBottom: 4 }}>{step.title}</div>
@@ -296,8 +303,8 @@ export default function About() {
             Whether you want to build a career or secure your enterprise, we have you covered.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
-            <Btn style={{ padding: "14px 32px", fontSize: 15 }}>Start Learning</Btn>
-            <Btn style={{ padding: "14px 32px", fontSize: 15, background: cyan, color: "#040e1a", borderColor: cyan }}>Contact Our Team</Btn>
+            <Btn onClick={() => navigate('/courses')} style={{ padding: "14px 32px", fontSize: 15 }}>Start Learning</Btn>
+            <Btn onClick={() => navigate('/contact')} style={{ padding: "14px 32px", fontSize: 15, background: cyan, color: "#040e1a", borderColor: cyan }}>Contact Our Team</Btn>
           </div>
         </div>
       </section>

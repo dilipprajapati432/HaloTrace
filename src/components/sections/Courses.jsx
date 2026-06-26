@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom";
 import { Btn, Tag } from "../ui/UI";
 import { bg, card, border, border2, neon, cyan, white, muted } from "../../styles/tokens";
 
@@ -17,17 +18,18 @@ const COURSES = [
 ];
 
 export default function Courses() {
+  const navigate = useNavigate();
   return (
     <section className="section-container" style={{ padding: "60px 56px", background: bg, overflow: "hidden" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 26 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4 }}>
+        <h2 style={{ fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4, textTransform: "uppercase" }}>
           POPULAR <span style={{ color: neon }}>COURSES</span>
         </h2>
-        <a href="#" style={{ color: cyan, fontSize: 13, textDecoration: "none", fontWeight: 600 }}
+        <Link to="/courses" style={{ color: cyan, fontSize: 13, textDecoration: "none", fontWeight: 600 }}
           onMouseEnter={e => e.currentTarget.style.color = neon}
           onMouseLeave={e => e.currentTarget.style.color = cyan}>
           View All Courses →
-        </a>
+        </Link>
       </div>
 
       <div style={{
@@ -89,7 +91,7 @@ export default function Courses() {
                     <span style={{ color: neon }}>📜</span> Certificate
                   </span>
                 </div>
-                <Btn style={{ width: "100%", justifyContent: "center", padding: "10px 0", fontSize: 14, fontWeight: 700, background: neon, color: "#040e1a", borderColor: neon }}>
+                <Btn onClick={() => navigate('/register')} style={{ width: "100%", justifyContent: "center", padding: "10px 0", fontSize: 14, fontWeight: 700, background: neon, color: "#040e1a", borderColor: neon }}>
                   Enroll Now
                 </Btn>
               </div>

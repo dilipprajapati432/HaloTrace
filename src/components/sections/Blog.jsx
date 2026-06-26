@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { bg2, card, border, border2, neon, cyan, white, muted } from "../../styles/tokens";
 
 const POSTS = [
@@ -19,14 +20,14 @@ export default function Blog() {
   return (
     <section className="section-container" style={{ padding: "60px 56px", background: bg2 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 26 }}>
-        <h2 style={{ fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4 }}>
+        <h2 style={{ fontSize: 18, fontWeight: 800, color: white, margin: 0, letterSpacing: .4, textTransform: "uppercase" }}>
           FROM OUR <span style={{ color: neon }}>BLOG</span>
         </h2>
-        <a href="#" style={{ color: cyan, fontSize: 13, textDecoration: "none", fontWeight: 600 }}
+        <Link to="/blog" style={{ color: cyan, fontSize: 13, textDecoration: "none", fontWeight: 600 }}
           onMouseEnter={e => e.currentTarget.style.color = neon}
           onMouseLeave={e => e.currentTarget.style.color = cyan}>
           View All Articles →
-        </a>
+        </Link>
       </div>
 
       <div style={{
@@ -61,7 +62,7 @@ export default function Blog() {
                 <h3 style={{ fontSize: 14, fontWeight: 700, color: white, margin: "0 0 14px", lineHeight: 1.42 }}>
                   {title}
                 </h3>
-                <a href="#" style={{
+                <Link to="/blog" style={{
                   color: neon, fontSize: 12.5, textDecoration: "none",
                   fontWeight: 600, display: "inline-flex", alignItems: "center", gap: 4,
                   transition: "gap .15s"
@@ -69,7 +70,7 @@ export default function Blog() {
                   onMouseEnter={e => e.currentTarget.style.gap = "8px"}
                   onMouseLeave={e => e.currentTarget.style.gap = "4px"}>
                   Read More →
-                </a>
+                </Link>
               </div>
             </div>
           ))}

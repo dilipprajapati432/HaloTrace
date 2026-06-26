@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { Btn, Tag } from "../ui/UI";
 import ThreatMap from "./ThreatMap";
 import { bg2, bg, neon, cyan, white, muted } from "../../styles/tokens";
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="hero-container" style={{
       minHeight: "calc(100vh - 90px - 72px)", position: "relative", overflow: "hidden",
@@ -44,8 +46,8 @@ export default function Hero() {
           and protecting organizations through professional security services.
         </p>
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-          <Btn style={{ padding: "13px 28px", fontSize: 14 }}>Explore Training →</Btn>
-          <Btn style={{ padding: "13px 28px", fontSize: 14, background: cyan, color: "#040e1a", borderColor: cyan }}>
+          <Btn onClick={() => navigate('/courses')} style={{ padding: "13px 28px", fontSize: 14 }}>Explore Training →</Btn>
+          <Btn onClick={() => navigate('/book-consultation')} style={{ padding: "13px 28px", fontSize: 14, background: cyan, color: "#040e1a", borderColor: cyan }}>
             Book Security Consultation →
           </Btn>
         </div>

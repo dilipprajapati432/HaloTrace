@@ -1,21 +1,23 @@
 import { Btn } from "../ui/UI";
+import { useNavigate, Link } from "react-router-dom";
 import { card, border2, neon, cyan, white, muted, textCol } from "../../styles/tokens";
 
 export default function CaseStudies() {
+  const navigate = useNavigate();
   return (
     <div style={{
       border: `1px solid ${border2}`, borderRadius: 12, padding: "32px 28px",
       background: "rgba(4, 10, 18, 0.4)", boxShadow: "0 8px 32px rgba(0,0,0,0.2)"
     }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 22 }}>
-        <h2 style={{ fontSize: 17, fontWeight: 800, color: white, margin: 0 }}>
+        <h2 style={{ fontSize: 17, fontWeight: 800, color: white, margin: 0, textTransform: "uppercase" }}>
           RECENT <span style={{ color: neon }}>CASE STUDIES</span>
         </h2>
-        <a href="#" style={{ color: cyan, fontSize: 12, textDecoration: "none", fontWeight: 600 }}
+        <Link to="/casestudies" style={{ color: cyan, fontSize: 12, textDecoration: "none", fontWeight: 600 }}
           onMouseEnter={e => e.currentTarget.style.color = neon}
           onMouseLeave={e => e.currentTarget.style.color = cyan}>
           View All →
-        </a>
+        </Link>
       </div>
 
       <div className="case-study-inner" style={{ display: "grid", gridTemplateColumns: "240px 1fr", gap: 16 }}>
@@ -53,7 +55,7 @@ export default function CaseStudies() {
             <div style={{ color: textCol, fontWeight: 600, margin: "6px 0 2px" }}>Outcome</div>
             Critical vulnerabilities fixed, security strengthened by 85%
           </div>
-          <Btn style={{ padding: "6px 14px", fontSize: 11.5, alignSelf: "flex-start", background: "#0d6efd", borderColor: "#0d6efd", color: white }}>Read Case Study</Btn>
+          <Btn onClick={() => navigate('/casestudies')} style={{ padding: "6px 14px", fontSize: 11.5, alignSelf: "flex-start", background: "#0d6efd", borderColor: "#0d6efd", color: white }}>Read Case Study</Btn>
         </div>
       </div>
     </div>

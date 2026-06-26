@@ -1,23 +1,24 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Btn } from "../ui/UI";
-import { bg, bg2, card, border, border2, neon, cyan, white, muted, textCol } from "../../styles/tokens";
+import { bg, bg2, card, border, border2, neon, cyan, white, muted, textCol, orange } from "../../styles/tokens";
 
 const navItems = [
   { label: "Home", path: "/" },
   { label: "Training", path: "#", subLinks: ["All Courses", "Workshops", "Certifications", "Internships", "Student Portal"] },
-  { label: "Services", path: "#", subLinks: ["VAPT", "Digital Forensics", "Incident Response", "Security Audits", "Consulting"] },
-  { label: "Courses", path: "#" },
-  { label: "Labs", path: "#" },
+  { label: "Services", path: "/services" },
+  { label: "Courses", path: "/courses" },
+  { label: "Labs", path: "/labs" },
+  { label: "Blog", path: "/blog" },
   { label: "Resources", path: "#", subLinks: ["Tools", "Cybersecurity News", "Free Resources", "Glossary", "FAQ"] },
   { label: "About", path: "/about" },
-  { label: "Contact", path: "#" },
+  { label: "Contact", path: "/contact" },
 ];
 
 function NavItem({ item, currentPath }) {
   const [hovered, setHovered] = useState(false);
   const { label, path, subLinks } = item;
-  
+
   const isActive = currentPath === path && path !== "#";
 
   return (
@@ -43,7 +44,7 @@ function NavItem({ item, currentPath }) {
           position: "absolute", top: "100%", left: 0, paddingTop: "8px", zIndex: 1000
         }}>
           <div style={{
-            background: "rgba(4, 10, 18, 0.95)", 
+            background: "rgba(4, 10, 18, 0.95)",
             backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)",
             border: `1px solid ${border2}`,
             borderTop: `2px solid ${cyan}`,
@@ -51,8 +52,24 @@ function NavItem({ item, currentPath }) {
             minWidth: 180, display: "flex", flexDirection: "column",
             boxShadow: `0 20px 40px rgba(0,0,0,0.8), 0 0 20px ${cyan}1a`,
           }}>
-            {subLinks.map(sub => (
-              <Link key={sub} to="#" style={{
+            {subLinks.map(sub => {
+              let targetPath = "/";
+              
+              if (["All Courses", "Workshops", "Certifications", "Internships"].includes(sub)) targetPath = "/courses";
+              if (sub === "Student Portal") targetPath = "/login";
+              
+              if (["VAPT", "Digital Forensics", "Incident Response", "Security Audits", "Consulting"].includes(sub)) {
+                targetPath = "/services";
+                if (sub === "VAPT") targetPath += "#vapt";
+                if (sub === "Digital Forensics" || sub === "Incident Response") targetPath += "#dfir";
+                if (sub === "Security Audits" || sub === "Consulting") targetPath += "#consulting";
+              }
+              
+              if (["Tools", "Cybersecurity News", "Free Resources", "Glossary"].includes(sub)) targetPath = "/blog";
+              if (sub === "FAQ") targetPath = "/faq";
+              
+              return (
+              <Link key={sub} to={targetPath} style={{
                 color: textCol, textDecoration: "none",
                 padding: "10px 16px", fontSize: 13, fontWeight: 500,
                 transition: "background .15s, color .15s"
@@ -61,7 +78,8 @@ function NavItem({ item, currentPath }) {
                 onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = textCol; }}>
                 {sub}
               </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
@@ -101,8 +119,8 @@ export default function Navbar() {
         </div>
         <div>
           <div className="nav-title" style={{ fontSize: 18, fontWeight: 900, color: white, lineHeight: 1.1, letterSpacing: 0.5 }}>
-            SKILLNETICS <span style={{ color: muted, fontWeight: 300, margin: "0 4px" }}>×</span>{" "}
-            <span style={{ color: cyan }}>H</span><span style={{ color: white }}>ALOTRACE</span>
+            <span style={{ color: cyan }}>S</span>KILLNETICS <span style={{ color: muted, fontWeight: 300, margin: "0 4px" }}>×</span>{" "}
+            <span style={{ color: orange }}>H</span>ALOTRACE
           </div>
           <div className="nav-subtitle" style={{ fontSize: 11, color: muted, letterSpacing: .2, marginTop: 2 }}>
             Cybersecurity Training &amp; Enterprise Security Solutions
@@ -118,10 +136,12 @@ export default function Navbar() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-        <Btn className="nav-book-btn" style={{ padding: "12px 28px", fontSize: 14, fontWeight: 700, background: neon, color: "#040e1a", borderColor: neon }}>
-          Book Consultation
-        </Btn>
-        <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
+        <Link to="/login" style={{ textDecoration: "none" }}>
+          <Btn className="nav-book-btn" style={{ padding: "10px 24px", fontSize: 14, fontWeight: 700, background: `rgba(0, 255, 156, 0.1)`, color: neon, borderColor: `rgba(0, 255, 156, 0.3)` }}>
+            Client Login <span style={{ marginLeft: 6 }}>→</span>
+          </Btn>
+        </Link>
+        <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle mobile menu">
           {menuOpen ? '✕' : '☰'}
         </button>
       </div>

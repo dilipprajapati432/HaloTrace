@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Btn, Check } from "../ui/UI";
 import { bg, card, border2, neon, cyan, muted, textCol, pink, orange, white } from "../../styles/tokens";
 
@@ -40,6 +41,7 @@ function DivisionCard({ children, accentColor }) {
 }
 
 export default function DivisionSplit() {
+  const navigate = useNavigate();
   return (
     <section className="section-container" style={{
       padding: "80px 56px",
@@ -96,7 +98,7 @@ export default function DivisionSplit() {
                 {SKILL_FEATURES.map(f => <Check key={f} text={f} color={cyan} />)}
               </div>
               <div>
-                <button style={{
+                <button onClick={() => navigate('/courses')} style={{
                   padding: "12px 24px", fontSize: 13.5, fontWeight: 700,
                   background: `linear-gradient(90deg, ${cyan}, #0077ff)`, color: "#040e1a",
                   border: "none", borderRadius: 6, cursor: "pointer", transition: "opacity .2s"
@@ -138,7 +140,7 @@ export default function DivisionSplit() {
                 {HALO_FEATURES.map(f => <Check key={f} text={f} color={orange} />)}
               </div>
               <div>
-                <button style={{
+                <button onClick={() => navigate('/services')} style={{
                   padding: "12px 24px", fontSize: 13.5, fontWeight: 700,
                   background: `linear-gradient(90deg, ${orange}, #e65c00)`, color: "#040e1a",
                   border: "none", borderRadius: 6, cursor: "pointer", transition: "opacity .2s"

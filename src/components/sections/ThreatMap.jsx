@@ -9,14 +9,14 @@ export default function ThreatMap() {
   // Increment attack counter and generate logs
   useEffect(() => {
     const types = ["DDoS Payload", "SQL Injection", "Malware Payload", "Brute Force", "Ransomware", "Port Scan"];
-    const ips = () => `${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.xxx`;
+    const ips = () => `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.xxx`;
 
     const interval = setInterval(() => {
       setAttacks(prev => prev + Math.floor(Math.random() * 5) + 1);
-      
+
       if (Math.random() > 0.3) {
         const type = types[Math.floor(Math.random() * types.length)];
-        const log = `[${new Date().toISOString().substring(11,19)}] ${type} detected from ${ips()}`;
+        const log = `[${new Date().toISOString().substring(11, 19)}] ${type} detected from ${ips()}`;
         setLogs(prev => [log, ...prev].slice(0, 4));
       }
     }, 1000);
@@ -56,8 +56,8 @@ export default function ThreatMap() {
       if (Math.random() < 0.05) {
         const start = cities[Math.floor(Math.random() * cities.length)];
         let end = cities[Math.floor(Math.random() * cities.length)];
-        while(end === start) end = cities[Math.floor(Math.random() * cities.length)];
-        
+        while (end === start) end = cities[Math.floor(Math.random() * cities.length)];
+
         projectiles.push({
           sx: start.x, sy: start.y,
           tx: end.x, ty: end.y,
@@ -79,7 +79,7 @@ export default function ThreatMap() {
         r.rad += 0.8;
         r.alpha -= 0.02;
         if (r.alpha <= 0) { ripples.splice(i, 1); continue; }
-        
+
         ctx.strokeStyle = r.col;
         ctx.globalAlpha = r.alpha;
         ctx.lineWidth = 1;
@@ -91,7 +91,7 @@ export default function ThreatMap() {
       for (let i = projectiles.length - 1; i >= 0; i--) {
         const pr = projectiles[i];
         pr.p += pr.sp;
-        
+
         if (pr.p >= 1) {
           ripples.push({ x: pr.tx, y: pr.ty, rad: 1, alpha: 1, col: pr.col });
           projectiles.splice(i, 1);
@@ -105,10 +105,10 @@ export default function ThreatMap() {
 
         ctx.strokeStyle = pr.col;
         ctx.lineWidth = 2;
-        ctx.shadowColor = pr.col; 
+        ctx.shadowColor = pr.col;
         ctx.shadowBlur = 8;
         ctx.beginPath(); ctx.moveTo(tailX, tailY); ctx.lineTo(cx, cy); ctx.stroke();
-        
+
         // Draw head
         ctx.fillStyle = white;
         ctx.beginPath(); ctx.arc(cx, cy, 1.5, 0, Math.PI * 2); ctx.fill();
@@ -122,9 +122,11 @@ export default function ThreatMap() {
   }, []);
 
   return (
-    <div className="threat-map-container" style={{ border: `1px solid ${border2}`, borderRadius: 12, overflow: "hidden", position: "relative",
-      background: "rgba(4, 10, 18, 0.4)", backdropFilter: "blur(12px)", boxShadow: `0 0 40px ${cyan}10` }}>
-      
+    <div className="threat-map-container" style={{
+      border: `1px solid ${border2}`, borderRadius: 12, overflow: "hidden", position: "relative",
+      background: "rgba(4, 10, 18, 0.4)", backdropFilter: "blur(12px)", boxShadow: `0 0 40px ${cyan}10`
+    }}>
+
       <div style={{ padding: "16px 20px 10px", display: "flex", alignItems: "center", gap: 8 }}>
         <span style={{ fontSize: 13, fontWeight: 800, color: textCol, letterSpacing: .8 }}>
           <span style={{ color: "#d9e3b1" }}>LIVE CYBER</span> THREAT MAP
@@ -139,11 +141,11 @@ export default function ThreatMap() {
         }} />
         <canvas ref={ref} width={420} height={220}
           style={{ position: "absolute", inset: 0, display: "block", width: "100%", height: 220 }} />
-          
+
         {/* Live Attack Logs Overlay */}
         <div style={{ position: "absolute", bottom: 10, right: 20, pointerEvents: "none", display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
           {logs.map((log, i) => (
-            <div key={i} style={{ 
+            <div key={i} style={{
               fontSize: 10, color: neon, fontFamily: "monospace", letterSpacing: -0.2,
               background: "rgba(0,0,0,0.5)", padding: "2px 6px", borderRadius: 4,
               opacity: 1 - (i * 0.25)
@@ -156,8 +158,8 @@ export default function ThreatMap() {
 
       <div className="threat-map-stats" style={{ display: "flex", justifyContent: "space-between", padding: "16px 20px 10px" }}>
         {[
-          ["LIVE ATTACKS", attacks.toLocaleString(), neon], 
-          ["TARGETS", "142", cyan], 
+          ["LIVE ATTACKS", attacks.toLocaleString(), neon],
+          ["TARGETS", "142", cyan],
           ["COUNTRIES", "96", orange]
         ].map(([l, v, co]) => (
           <div key={l} style={{ textAlign: "left" }}>

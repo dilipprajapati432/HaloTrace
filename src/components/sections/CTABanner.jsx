@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { neon, white, muted } from "../../styles/tokens";
 
 export default function CTABanner() {
+  const navigate = useNavigate();
   return (
     <section className="section-container" style={{ padding: "0 56px 60px" }}>
       <div className="cta-container" style={{
@@ -31,7 +33,7 @@ export default function CTABanner() {
           </div>
 
           <div style={{ padding: "16px 0" }}>
-            <h2 style={{ fontSize: 22, fontWeight: 500, color: white, margin: "0 0 6px", lineHeight: 1.35 }}>
+            <h2 style={{ fontSize: 22, fontWeight: 500, color: white, margin: "0 0 6px", lineHeight: 1.35, fontFamily: "Orbitron, sans-serif" }}>
               Ready to Start Your Cybersecurity Journey<br />
               or Secure Your Organization?
             </h2>
@@ -43,7 +45,7 @@ export default function CTABanner() {
 
         {/* Right Side: Buttons */}
         <div className="cta-buttons" style={{ display: "flex", gap: 14, flexShrink: 0, paddingRight: 32 }}>
-          <button style={{
+          <button onClick={() => navigate('/courses')} style={{
             background: "linear-gradient(90deg, #4ade80, #22c55e)",
             color: "#040e1a", fontWeight: 700, padding: "14px 28px",
             borderRadius: 6, border: "none", cursor: "pointer", fontSize: 13,
@@ -53,7 +55,7 @@ export default function CTABanner() {
             onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
             Explore Courses
           </button>
-          <button style={{
+          <button onClick={() => navigate('/book-consultation')} style={{
             background: "linear-gradient(90deg, #0ea5e9, #3b82f6)",
             color: white, fontWeight: 700, padding: "14px 28px",
             borderRadius: 6, border: "none", cursor: "pointer", fontSize: 13,

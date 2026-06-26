@@ -14,7 +14,7 @@ const PARTNERS = [
 export default function Partners() {
   return (
     <section className="section-container" style={{ padding: "0 56px 60px" }}>
-      <h2 style={{ fontSize: 17, fontWeight: 800, color: "white", margin: 0, marginBottom: 22 }}>
+      <h2 style={{ fontSize: 17, fontWeight: 800, color: "white", margin: 0, marginBottom: 22, textTransform: "uppercase" }}>
         OUR PARTNERS <span style={{ color: neon }}>&amp; COLLABORATORS</span>
       </h2>
       <div style={{

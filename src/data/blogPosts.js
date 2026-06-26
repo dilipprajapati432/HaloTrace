@@ -1,0 +1,110 @@
+export const blogPosts = [
+  {
+    id: 1,
+    title: "Top 10 Web Application Security Risks in 2024",
+    slug: "top-10-web-application-security-risks-2024",
+    category: "Ethical Hacking",
+    date: "Oct 12, 2024",
+    readTime: "8 min read",
+    excerpt: "Explore the most critical security flaws affecting modern web applications and how to mitigate them before attackers exploit them.",
+    author: "Alex Mercer",
+    tags: ["OWASP", "Web Security", "Pentesting"],
+    featured: true
+  },
+  {
+    id: 2,
+    title: "A Beginner's Guide to OSINT Techniques",
+    slug: "beginners-guide-to-osint-techniques",
+    category: "OSINT",
+    date: "Sep 28, 2024",
+    readTime: "6 min read",
+    excerpt: "Learn how to gather actionable intelligence from public sources without alerting your targets. A foundational guide for cyber analysts.",
+    author: "Sarah Jenkins",
+    tags: ["Reconnaissance", "Intelligence", "Footprinting"],
+    featured: true
+  },
+  {
+    id: 3,
+    title: "Understanding Ransomware Attack Kill Chain",
+    slug: "understanding-ransomware-attack-kill-chain",
+    category: "Malware Analysis",
+    date: "Nov 05, 2024",
+    readTime: "10 min read",
+    excerpt: "Deconstruct the anatomy of a modern ransomware attack, from initial phishing payload to lateral movement and final encryption.",
+    author: "Dr. Marcus Vance",
+    tags: ["Ransomware", "Threat Hunting", "Incident Response"],
+    featured: true
+  },
+  {
+    id: 4,
+    title: "How to Set Up a Home Cyber Lab for Free",
+    slug: "how-to-setup-home-cyber-lab-free",
+    category: "Ethical Hacking",
+    date: "Aug 14, 2024",
+    readTime: "7 min read",
+    excerpt: "Build a safe, isolated environment to practice your hacking skills using VirtualBox, Kali Linux, and intentionally vulnerable VMs.",
+    author: "Alex Mercer",
+    tags: ["Lab Setup", "Virtualization", "Training"],
+    featured: false
+  },
+  {
+    id: 5,
+    title: "Nmap Cheatsheet: Every Flag You Need to Know",
+    slug: "nmap-cheatsheet-flags",
+    category: "Networking",
+    date: "Jul 22, 2024",
+    readTime: "5 min read",
+    excerpt: "A quick-reference guide to the world's most popular network scanner. Master stealth scans, OS detection, and script engine usage.",
+    author: "Elena Rodriguez",
+    tags: ["Nmap", "Port Scanning", "Cheatsheet"],
+    featured: false
+  },
+  {
+    id: 6,
+    title: "Introduction to Wireshark: Reading Packets Like a Pro",
+    slug: "intro-to-wireshark-packet-analysis",
+    category: "Networking",
+    date: "Jun 10, 2024",
+    readTime: "9 min read",
+    excerpt: "Dive deep into network traffic analysis. Learn to capture, filter, and read packets to detect anomalies and clear-text credentials.",
+    author: "David Chen",
+    tags: ["Wireshark", "Packet Analysis", "Forensics"],
+    featured: false
+  },
+  {
+    id: 7,
+    title: "OSINT Framework: Tools for Passive Reconnaissance",
+    slug: "osint-framework-passive-recon",
+    category: "OSINT",
+    date: "May 18, 2024",
+    readTime: "6 min read",
+    excerpt: "Discover the best free tools and frameworks available for conducting comprehensive passive reconnaissance on targets.",
+    author: "Sarah Jenkins",
+    tags: ["Tools", "Framework", "Passive Recon"],
+    featured: false
+  },
+  {
+    id: 8,
+    title: "What is SOC and How Does It Work?",
+    slug: "what-is-soc-how-it-works",
+    category: "SOC",
+    date: "Apr 05, 2024",
+    readTime: "8 min read",
+    excerpt: "Inside the Security Operations Center: The people, processes, and technologies that make up the frontline of cyber defense.",
+    author: "James Wilson",
+    tags: ["SOC", "Blue Team", "Defense"],
+    featured: false
+  },
+  {
+    id: 9,
+    title: "Linux Commands Every Ethical Hacker Must Know",
+    slug: "linux-commands-ethical-hacker",
+    category: "Linux",
+    date: "Mar 12, 2024",
+    readTime: "7 min read",
+    excerpt: "From basic file navigation to advanced networking and privilege escalation, master the Linux terminal commands essential for pentesting.",
+    author: "Alex Mercer",
+    tags: ["Linux", "CLI", "Basics"],
+    featured: false
+  }
+];

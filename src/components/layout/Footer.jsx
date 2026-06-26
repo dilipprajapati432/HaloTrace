@@ -1,29 +1,53 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Btn } from "../ui/UI";
-import { bg, card, card2, border, border2, neon, cyan, white, muted, textCol } from "../../styles/tokens";
+import { bg, card, card2, border, border2, neon, cyan, white, muted, textCol, orange } from "../../styles/tokens";
 
 import { FaXTwitter, FaLinkedinIn, FaYoutube, FaInstagram, FaFacebookF } from "react-icons/fa6";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 
 const FOOTER_COLS = [
-  { head: "TRAINING",  links: ["All Courses","Workshops","Certifications","Internships","Student Portal"] },
-  { head: "SERVICES",  links: ["VAPT","Digital Forensics","Incident Response","Security Audits","Consulting"] },
-  { head: "COMPANY",   links: ["About Us","Case Studies","Careers","Blog","Contact Us"] },
-  { head: "RESOURCES", links: ["Tools","Cybersecurity News","Free Resources","Glossary","FAQ"] },
+  { head: "TRAINING", links: ["All Courses", "Workshops", "Certifications", "Internships", "Student Portal"] },
+  { head: "SERVICES", links: ["VAPT", "Digital Forensics", "Incident Response", "Security Audits", "Consulting"] },
+  { head: "COMPANY", links: ["About Us", "Case Studies", "Careers", "Blog", "Contact Us"] },
+  { head: "RESOURCES", links: ["Tools", "Cybersecurity News", "Free Resources", "Glossary", "FAQ"] },
 ];
 
+const ROUTE_MAP = {
+  "About Us": "/about",
+  "Case Studies": "/casestudies",
+  "Careers": "/about",
+  "Blog": "/blog",
+  "Contact Us": "/contact",
+  "All Courses": "/courses",
+  "Workshops": "/courses",
+  "Certifications": "/courses",
+  "Internships": "/courses",
+  "Student Portal": "/login",
+  "VAPT": "/services",
+  "Digital Forensics": "/services",
+  "Incident Response": "/services",
+  "Security Audits": "/services",
+  "Consulting": "/services",
+  "Tools": "/blog",
+  "Cybersecurity News": "/blog",
+  "Free Resources": "/blog",
+  "Glossary": "/blog",
+  "FAQ": "/faq"
+};
+
 const SOCIAL = [
-  { icon: <FaXTwitter size={15} />,  label: "Twitter" },
-  { icon: <FaLinkedinIn size={15} />, label: "LinkedIn" },
-  { icon: <FaYoutube size={15} />,  label: "YouTube" },
-  { icon: <FaInstagram size={15} />, label: "Instagram" },
-  { icon: <FaFacebookF size={15} />, label: "Facebook" },
+  { icon: <FaXTwitter size={15} />, label: "Twitter", href: "https://twitter.com/skillnetics" },
+  { icon: <FaLinkedinIn size={15} />, label: "LinkedIn", href: "https://linkedin.com/company/skillnetics" },
+  { icon: <FaYoutube size={15} />, label: "YouTube", href: "https://youtube.com/@skillnetics" },
+  { icon: <FaInstagram size={15} />, label: "Instagram", href: "https://instagram.com/skillnetics" },
+  { icon: <FaFacebookF size={15} />, label: "Facebook", href: "https://facebook.com/skillnetics" },
 ];
 
 const CONTACT_INFO = [
   [<MdEmail size={16} />, "halotrace.enquiry@gmail.com"],
   [<MdPhone size={16} />, ""],
-  [<MdLocationOn size={16} />, "Gujarat, India"],
+  [<MdLocationOn size={16} />, "G-3, Aditya complex, opp. Kapadia health club, bhatar road, Surat -395001"],
 ];
 
 const LEGAL_LINKS = ["Privacy Policy", "Terms & Conditions", "Security Policy", "Responsible Disclosure"];
@@ -32,38 +56,44 @@ export default function Footer() {
   const [email, setEmail] = useState("");
 
   return (
-    <footer className="footer-container" style={{ background: "#030c14", padding: "52px 56px 28px",
-      borderTop: `1px solid ${border}` }}>
+    <footer className="footer-container" style={{
+      background: "#030c14", padding: "52px 56px 20px",
+      borderTop: `1px solid ${border}`
+    }}>
 
       {/* Main grid */}
-      <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
-        gap: 36, marginBottom: 38 }}>
+      <div className="footer-grid" style={{
+        display: "grid", gridTemplateColumns: "1.6fr 1fr 1fr 1fr 1fr",
+        gap: 36, marginBottom: 38
+      }}>
 
         {/* Brand column */}
         <div className="footer-brand">
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 13 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 8, flexShrink: 0,
+            <div style={{
+              width: 36, height: 36, borderRadius: 8, flexShrink: 0,
               background: `linear-gradient(135deg,${neon},${cyan})`,
-              display: "grid", placeItems: "center", fontWeight: 900, fontSize: 18, color: bg }}>S</div>
+              display: "grid", placeItems: "center", fontWeight: 900, fontSize: 18, color: bg
+            }}>S</div>
             <div style={{ fontSize: 13, fontWeight: 800, color: white, lineHeight: 1.1 }}>
-              SKILLNETICS × <span style={{ color: cyan }}>HALOTRACE</span>
+              <span style={{ color: cyan }}>S</span>KILLNETICS <span style={{ color: muted, fontWeight: 300, margin: "0 4px" }}>×</span> <span style={{ color: orange }}>H</span>ALOTRACE
             </div>
           </div>
           <p style={{ fontSize: 12.5, color: muted, lineHeight: 1.72, margin: "0 0 18px" }}>
             Building Cybersecurity Excellence<br />through Training &amp; Professional Services.
           </p>
           <div style={{ display: "flex", gap: 8 }}>
-            {SOCIAL.map(({ icon, label }) => (
-              <button key={label} title={label} style={{
-                width: 32, height: 32, borderRadius: "50%",
+            {SOCIAL.map(({ icon, label, href }) => (
+              <a key={label} href={href} title={label} target="_blank" rel="noopener noreferrer" style={{
+                width: 32, height: 32, borderRadius: "50%", textDecoration: "none",
                 background: card, border: `1px solid ${border2}`,
                 display: "grid", placeItems: "center", cursor: "pointer",
                 fontSize: 13, color: muted, transition: "all .15s",
               }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = neon; e.currentTarget.style.color = neon; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = border2; e.currentTarget.style.color = muted; }}>
+                onMouseEnter={e => { e.currentTarget.style.borderColor = neon; e.currentTarget.style.color = neon; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = border2; e.currentTarget.style.color = muted; }}>
                 {icon}
-              </button>
+              </a>
             ))}
           </div>
         </div>
@@ -71,22 +101,41 @@ export default function Footer() {
         {/* Link columns */}
         {FOOTER_COLS.map(({ head, links }) => (
           <div key={head}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: white,
-              letterSpacing: 1.8, marginBottom: 14, textTransform: "uppercase" }}>{head}</div>
-            {links.map(l => (
-              <a key={l} href="#" style={{ display: "block", color: muted,
-                textDecoration: "none", fontSize: 12.5, marginBottom: 9, transition: "color .15s" }}
-                onMouseEnter={e => e.currentTarget.style.color = neon}
-                onMouseLeave={e => e.currentTarget.style.color = muted}>{l}</a>
-            ))}
+            <div style={{
+              fontSize: 11, fontWeight: 700, color: white,
+              letterSpacing: 1.8, marginBottom: 14, textTransform: "uppercase"
+            }}>{head}</div>
+            {links.map(l => {
+              const path = ROUTE_MAP[l];
+              if (path) {
+                return (
+                  <Link key={l} to={path} style={{
+                    display: "block", color: muted,
+                    textDecoration: "none", fontSize: 12.5, marginBottom: 9, transition: "color .15s"
+                  }}
+                    onMouseEnter={e => e.currentTarget.style.color = neon}
+                    onMouseLeave={e => e.currentTarget.style.color = muted}>{l}</Link>
+                );
+              }
+              return (
+                <a key={l} href="#" style={{
+                  display: "block", color: muted,
+                  textDecoration: "none", fontSize: 12.5, marginBottom: 9, transition: "color .15s"
+                }}
+                  onMouseEnter={e => e.currentTarget.style.color = neon}
+                  onMouseLeave={e => e.currentTarget.style.color = muted}>{l}</a>
+              );
+            })}
           </div>
         ))}
       </div>
 
       {/* Contact + newsletter */}
-      <div className="footer-newsletter" style={{ borderTop: `1px solid ${border}`, paddingTop: 22,
+      <div className="footer-newsletter" style={{
+        borderTop: `1px solid ${border}`, paddingTop: 22,
         display: "grid", gridTemplateColumns: "1fr auto", gap: 20,
-        marginBottom: 22, alignItems: "center" }}>
+        marginBottom: 22, alignItems: "center"
+      }}>
         <div className="contact-info" style={{ display: "flex", gap: 26, flexWrap: "wrap" }}>
           {CONTACT_INFO.map(([icon, text]) => (
             <div key={text} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: muted }}>
@@ -101,9 +150,11 @@ export default function Footer() {
             value={email}
             onChange={e => setEmail(e.target.value)}
             placeholder="Your email address"
-            style={{ background: card2, border: `1px solid ${border2}`, borderRadius: 5,
+            style={{
+              background: card2, border: `1px solid ${border2}`, borderRadius: 5,
               padding: "7px 12px", fontSize: 12, color: textCol, outline: "none",
-              width: 196, fontFamily: "inherit", transition: "border-color .15s" }}
+              width: 196, fontFamily: "inherit", transition: "border-color .15s"
+            }}
             onFocus={e => e.target.style.borderColor = neon}
             onBlur={e => e.target.style.borderColor = border2}
           />
@@ -112,19 +163,43 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="footer-bottom" style={{ borderTop: `1px solid ${border}`, paddingTop: 18,
+      <div className="footer-bottom" style={{
+        borderTop: `1px solid ${border}`, paddingTop: 18, paddingBottom: 4,
         display: "flex", justifyContent: "space-between", alignItems: "center",
-        flexWrap: "wrap", gap: 10 }}>
+        flexWrap: "wrap", gap: 12
+      }}>
         <div style={{ fontSize: 11, color: muted }}>
           © 2024 Skillnetics × HaloTrace. All Rights Reserved.
         </div>
-        <div className="footer-legal-links" style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-          {LEGAL_LINKS.map(l => (
-            <a key={l} href="#" style={{ fontSize: 11, color: muted,
-              textDecoration: "none", transition: "color .15s" }}
-              onMouseEnter={e => e.currentTarget.style.color = neon}
-              onMouseLeave={e => e.currentTarget.style.color = muted}>{l}</a>
-          ))}
+        <div className="footer-legal-links" style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+          {LEGAL_LINKS.map((l, i) => {
+            const legalRoute = {
+              "Privacy Policy": "/privacy",
+              "Terms & Conditions": "/terms",
+              "Security Policy": "/security",
+              "Responsible Disclosure": "/disclosure"
+            };
+            const linkStyle = { fontSize: 11, color: muted, textDecoration: "none", transition: "color .15s" };
+            const sep = i < LEGAL_LINKS.length - 1 ? <span key={`sep-${i}`} style={{ color: border2, fontSize: 10 }}>|</span> : null;
+            if (legalRoute[l]) {
+              return (
+                <span key={l} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                  <Link to={legalRoute[l]} style={linkStyle}
+                    onMouseEnter={e => e.currentTarget.style.color = neon}
+                    onMouseLeave={e => e.currentTarget.style.color = muted}>{l}</Link>
+                  {sep}
+                </span>
+              );
+            }
+            return (
+              <span key={l} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                <a href="#" style={linkStyle}
+                  onMouseEnter={e => e.currentTarget.style.color = neon}
+                  onMouseLeave={e => e.currentTarget.style.color = muted}>{l}</a>
+                {sep}
+              </span>
+            );
+          })}
         </div>
       </div>
     </footer>
