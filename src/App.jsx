@@ -28,6 +28,7 @@ const Login = React.lazy(() => import("./pages/Login"));
 const Register = React.lazy(() => import("./pages/Register"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const FAQ = React.lazy(() => import("./pages/FAQ"));
+const Resources = React.lazy(() => import("./pages/Resources"));
 
 export default function App() {
   return (
@@ -57,6 +58,7 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/faq" element={<FAQ />} />
+                <Route path="/resources" element={<Resources />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

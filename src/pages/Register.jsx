@@ -212,7 +212,7 @@ export default function Register() {
                 Verify Email
               </h1>
               <p style={{ color: muted, fontSize: 13.5, margin: 0, lineHeight: 1.5 }}>
-                We've sent a 6-digit code to<br/>
+                We've sent a 6-digit code to<br />
                 <strong style={{ color: cyan }}>{email}</strong>
               </p>
             </div>
@@ -242,7 +242,7 @@ export default function Register() {
                   />
                 ))}
               </div>
-              
+
               {otpError && <div style={{ color: red, fontSize: 12, textAlign: "center", marginBottom: 16 }}>{otpError}</div>}
 
               <button
@@ -309,218 +309,218 @@ export default function Register() {
             </div>
 
             <form onSubmit={handleSubmit}>
-          {/* Full Name */}
-          <div style={{ marginBottom: 18 }}>
-            <label style={labelStyle}>Full Name</label>
-            <input
-              id="register-name"
-              type="text"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              onFocus={() => setFocusedField("name")}
-              onBlur={() => setFocusedField(null)}
-              placeholder="Jane Doe"
-              style={inputStyle("name")}
-              required
-            />
-          </div>
-
-          {/* Email */}
-          <div style={{ marginBottom: 18 }}>
-            <label style={labelStyle}>Email Address</label>
-            <input
-              id="register-email"
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              onFocus={() => setFocusedField("email")}
-              onBlur={() => setFocusedField(null)}
-              placeholder="jane@company.com"
-              style={inputStyle("email")}
-              required
-            />
-          </div>
-
-          {/* Password */}
-          <div style={{ marginBottom: 18 }}>
-            <label style={labelStyle}>Password</label>
-            <div style={{ position: "relative" }}>
-              <input
-                id="register-password"
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                onFocus={() => setFocusedField("password")}
-                onBlur={() => setFocusedField(null)}
-                placeholder="Min. 8 characters"
-                style={inputStyle("password")}
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                style={{
-                  position: "absolute", right: 14, top: "50%", transform: "translateY(-50%)",
-                  background: "transparent", border: "none", color: muted,
-                  cursor: "pointer", fontSize: 13, padding: 4,
-                  transition: "color 0.2s",
-                }}
-                onMouseEnter={e => e.currentTarget.style.color = cyan}
-                onMouseLeave={e => e.currentTarget.style.color = muted}
-                aria-label={showPassword ? "Hide password" : "Show password"}
-              >
-                {showPassword ? (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                ) : (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
-                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
-                    <line x1="1" y1="1" x2="23" y2="23" />
-                    <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
-                  </svg>
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Confirm Password */}
-          <div style={{ marginBottom: 22 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <label style={labelStyle}>Confirm Password</label>
-              {passwordsMatch && (
-                <span style={{ fontSize: 11, color: neon, fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill={neon}><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
-                  Match
-                </span>
-              )}
-              {passwordsMismatch && (
-                <span style={{ fontSize: 11, color: red, fontWeight: 600 }}>
-                  Mismatch
-                </span>
-              )}
-            </div>
-            <input
-              id="register-confirm-password"
-              type="password"
-              value={confirmPassword}
-              onChange={e => setConfirmPassword(e.target.value)}
-              onFocus={() => setFocusedField("confirmPassword")}
-              onBlur={() => setFocusedField(null)}
-              placeholder="Re-enter your password"
-              style={inputStyle("confirmPassword")}
-              required
-            />
-          </div>
-
-          {/* Terms & Conditions Checkbox */}
-          <div style={{ marginBottom: 26 }}>
-            <label
-              htmlFor="register-terms"
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: 10,
-                cursor: "pointer",
-                fontSize: 13,
-                color: muted,
-                lineHeight: 1.5,
-                userSelect: "none",
-              }}
-            >
-              <div
-                onClick={() => setAgreedTerms(!agreedTerms)}
-                style={{
-                  width: 20, height: 20, minWidth: 20,
-                  borderRadius: 6,
-                  border: `1.5px solid ${agreedTerms ? cyan : "rgba(255,255,255,0.18)"}`,
-                  background: agreedTerms ? `${cyan}22` : "rgba(5, 13, 26, 0.8)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  transition: "all 0.25s ease",
-                  marginTop: 1,
-                  cursor: "pointer",
-                  boxShadow: agreedTerms ? `0 0 8px ${cyan}33` : "none",
-                }}
-              >
-                {agreedTerms && (
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={cyan} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                )}
+              {/* Full Name */}
+              <div style={{ marginBottom: 18 }}>
+                <label style={labelStyle}>Full Name</label>
+                <input
+                  id="register-name"
+                  type="text"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  onFocus={() => setFocusedField("name")}
+                  onBlur={() => setFocusedField(null)}
+                  placeholder="Jane Doe"
+                  style={inputStyle("name")}
+                  required
+                />
               </div>
-              <span>
-                I agree to the{" "}
-                <span
-                  style={{ color: cyan, fontWeight: 600, cursor: "pointer", transition: "opacity 0.2s", textDecoration: "underline", textDecorationColor: `${cyan}44`, textUnderlineOffset: 2 }}
-                  onMouseEnter={e => e.currentTarget.style.opacity = "0.7"}
-                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
-                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setModalContent("terms"); }}
-                >
-                  Terms & Conditions
-                </span>{" "}
-                and{" "}
-                <span
-                  style={{ color: cyan, fontWeight: 600, cursor: "pointer", transition: "opacity 0.2s", textDecoration: "underline", textDecorationColor: `${cyan}44`, textUnderlineOffset: 2 }}
-                  onMouseEnter={e => e.currentTarget.style.opacity = "0.7"}
-                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
-                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setModalContent("privacy"); }}
-                >
-                  Privacy Policy
-                </span>
-              </span>
-              <input
-                type="checkbox"
-                id="register-terms"
-                checked={agreedTerms}
-                onChange={e => setAgreedTerms(e.target.checked)}
-                style={{ position: "absolute", opacity: 0, width: 0, height: 0 }}
-              />
-            </label>
-          </div>
 
-          {/* Submit Button */}
-          <button
-            id="register-submit"
-            type="submit"
-            disabled={loading}
-            style={{
-              width: "100%",
-              padding: "14px",
-              fontSize: 14,
-              fontWeight: 700,
-              fontFamily: "inherit",
-              background: loading ? `${neon}88` : `linear-gradient(135deg, ${neon}, #00cc7a)`,
-              border: "none",
-              borderRadius: 10,
-              color: "#050d1a",
-              cursor: loading ? "not-allowed" : "pointer",
-              transition: "transform 0.2s ease, box-shadow 0.2s ease",
-              boxShadow: `0 4px 16px ${neon}33`,
-              letterSpacing: 0.5,
-            }}
-            onMouseEnter={e => { if (!loading) { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 8px 24px ${neon}44`; } }}
-            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = `0 4px 16px ${neon}33`; }}
-          >
-            {loading ? "Creating Account..." : "Create Account"}
-          </button>
+              {/* Email */}
+              <div style={{ marginBottom: 18 }}>
+                <label style={labelStyle}>Email Address</label>
+                <input
+                  id="register-email"
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  onFocus={() => setFocusedField("email")}
+                  onBlur={() => setFocusedField(null)}
+                  placeholder="jane@company.com"
+                  style={inputStyle("email")}
+                  required
+                />
+              </div>
 
-          {/* Login Link */}
-          <div style={{ marginTop: 28, textAlign: "center", fontSize: 13.5, color: muted }}>
-            Already have an account?{" "}
-            <Link to="/login" style={{
-              color: cyan, textDecoration: "none", fontWeight: 600,
-              transition: "opacity 0.2s",
-            }}
-              onMouseEnter={e => e.currentTarget.style.opacity = "0.75"}
-              onMouseLeave={e => e.currentTarget.style.opacity = "1"}
-            >
-              Log In
-            </Link>
-          </div>
-        </form>
-        </>
+              {/* Password */}
+              <div style={{ marginBottom: 18 }}>
+                <label style={labelStyle}>Password</label>
+                <div style={{ position: "relative" }}>
+                  <input
+                    id="register-password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    onFocus={() => setFocusedField("password")}
+                    onBlur={() => setFocusedField(null)}
+                    placeholder="Min. 8 characters"
+                    style={inputStyle("password")}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{
+                      position: "absolute", right: 14, top: "50%", transform: "translateY(-50%)",
+                      background: "transparent", border: "none", color: muted,
+                      cursor: "pointer", fontSize: 13, padding: 4,
+                      transition: "color 0.2s",
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.color = cyan}
+                    onMouseLeave={e => e.currentTarget.style.color = muted}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    ) : (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                        <line x1="1" y1="1" x2="23" y2="23" />
+                        <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Confirm Password */}
+              <div style={{ marginBottom: 22 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <label style={labelStyle}>Confirm Password</label>
+                  {passwordsMatch && (
+                    <span style={{ fontSize: 11, color: neon, fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill={neon}><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
+                      Match
+                    </span>
+                  )}
+                  {passwordsMismatch && (
+                    <span style={{ fontSize: 11, color: red, fontWeight: 600 }}>
+                      Mismatch
+                    </span>
+                  )}
+                </div>
+                <input
+                  id="register-confirm-password"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={e => setConfirmPassword(e.target.value)}
+                  onFocus={() => setFocusedField("confirmPassword")}
+                  onBlur={() => setFocusedField(null)}
+                  placeholder="Re-enter your password"
+                  style={inputStyle("confirmPassword")}
+                  required
+                />
+              </div>
+
+              {/* Terms & Conditions Checkbox */}
+              <div style={{ marginBottom: 26 }}>
+                <label
+                  htmlFor="register-terms"
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 10,
+                    cursor: "pointer",
+                    fontSize: 13,
+                    color: muted,
+                    lineHeight: 1.5,
+                    userSelect: "none",
+                  }}
+                >
+                  <div
+                    onClick={() => setAgreedTerms(!agreedTerms)}
+                    style={{
+                      width: 20, height: 20, minWidth: 20,
+                      borderRadius: 6,
+                      border: `1.5px solid ${agreedTerms ? cyan : "rgba(255,255,255,0.18)"}`,
+                      background: agreedTerms ? `${cyan}22` : "rgba(5, 13, 26, 0.8)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      transition: "all 0.25s ease",
+                      marginTop: 1,
+                      cursor: "pointer",
+                      boxShadow: agreedTerms ? `0 0 8px ${cyan}33` : "none",
+                    }}
+                  >
+                    {agreedTerms && (
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={cyan} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    )}
+                  </div>
+                  <span>
+                    I agree to the{" "}
+                    <span
+                      style={{ color: cyan, fontWeight: 600, cursor: "pointer", transition: "opacity 0.2s", textDecoration: "underline", textDecorationColor: `${cyan}44`, textUnderlineOffset: 2 }}
+                      onMouseEnter={e => e.currentTarget.style.opacity = "0.7"}
+                      onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); setModalContent("terms"); }}
+                    >
+                      Terms & Conditions
+                    </span>{" "}
+                    and{" "}
+                    <span
+                      style={{ color: cyan, fontWeight: 600, cursor: "pointer", transition: "opacity 0.2s", textDecoration: "underline", textDecorationColor: `${cyan}44`, textUnderlineOffset: 2 }}
+                      onMouseEnter={e => e.currentTarget.style.opacity = "0.7"}
+                      onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); setModalContent("privacy"); }}
+                    >
+                      Privacy Policy
+                    </span>
+                  </span>
+                  <input
+                    type="checkbox"
+                    id="register-terms"
+                    checked={agreedTerms}
+                    onChange={e => setAgreedTerms(e.target.checked)}
+                    style={{ position: "absolute", opacity: 0, width: 0, height: 0 }}
+                  />
+                </label>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                id="register-submit"
+                type="submit"
+                disabled={loading}
+                style={{
+                  width: "100%",
+                  padding: "14px",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  fontFamily: "inherit",
+                  background: loading ? `${neon}88` : `linear-gradient(135deg, ${neon}, #00cc7a)`,
+                  border: "none",
+                  borderRadius: 10,
+                  color: "#050d1a",
+                  cursor: loading ? "not-allowed" : "pointer",
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                  boxShadow: `0 4px 16px ${neon}33`,
+                  letterSpacing: 0.5,
+                }}
+                onMouseEnter={e => { if (!loading) { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 8px 24px ${neon}44`; } }}
+                onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = `0 4px 16px ${neon}33`; }}
+              >
+                {loading ? "Creating Account..." : "Create Account"}
+              </button>
+
+              {/* Login Link */}
+              <div style={{ marginTop: 28, textAlign: "center", fontSize: 13.5, color: muted }}>
+                Already have an account?{" "}
+                <Link to="/login" style={{
+                  color: cyan, textDecoration: "none", fontWeight: 600,
+                  transition: "opacity 0.2s",
+                }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = "0.75"}
+                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                >
+                  Log In
+                </Link>
+              </div>
+            </form>
+          </>
         )}
       </div>
 

@@ -29,10 +29,10 @@ const ROUTE_MAP = {
   "Incident Response": "/services",
   "Security Audits": "/services",
   "Consulting": "/services",
-  "Tools": "/blog",
-  "Cybersecurity News": "/blog",
-  "Free Resources": "/blog",
-  "Glossary": "/blog",
+  "Tools": "/resources?tab=tools",
+  "Cybersecurity News": "/resources?tab=news",
+  "Free Resources": "/resources?tab=free-resources",
+  "Glossary": "/resources?tab=glossary",
   "FAQ": "/faq"
 };
 

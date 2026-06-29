@@ -315,422 +315,422 @@ export default function Courses() {
 
       <AnimatePresence mode="wait">
         {activeCourse ? (
-          <motion.div 
+          <motion.div
             key="split-view"
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}
             style={{ display: "flex", height: "calc(100vh - 72px)", marginTop: 72, width: "100%", overflow: "hidden" }}
           >
-          {/* SIDEBAR */}
-          <div style={{
-            width: "320px", flexShrink: 0, borderRight: `1px solid ${border2}`, background: `rgba(2, 6, 16, 0.95)`,
-            display: "flex", flexDirection: "column", height: "calc(100vh - 72px)", position: "sticky", top: 72
-          }}>
-            <div style={{ padding: "24px", borderBottom: `1px solid ${border2}` }}>
-              <button onClick={() => setActiveCourse(null)} style={{
-                background: "transparent", color: muted, border: "none", display: "flex", alignItems: "center", gap: 8,
-                cursor: "pointer", fontSize: 14, fontWeight: 600, padding: 0, transition: "color .2s"
-              }} onMouseEnter={e => e.currentTarget.style.color = white} onMouseLeave={e => e.currentTarget.style.color = muted}>
-                ← Back to All Courses
-              </button>
-            </div>
-            <div style={{ overflowY: "auto", flex: 1, padding: "16px", scrollbarWidth: "thin" }}>
-              {COURSES.map(c => (
-                <div key={c.id} onClick={() => { setActiveCourse(c); window.scrollTo(0, 0); }} style={{
-                  padding: "16px", borderRadius: 12, cursor: "pointer", marginBottom: 12,
-                  background: activeCourse.id === c.id ? `${c.color}1a` : "transparent",
-                  border: `1px solid ${activeCourse.id === c.id ? `${c.color}4d` : border2}`,
-                  transition: "all .2s"
-                }} onMouseEnter={e => { if (activeCourse.id !== c.id) e.currentTarget.style.borderColor = `${c.color}66` }}
-                   onMouseLeave={e => { if (activeCourse.id !== c.id) e.currentTarget.style.borderColor = border2 }}>
-                  <div style={{ fontSize: 11, color: c.color, textTransform: "uppercase", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>{c.category}</div>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: activeCourse.id === c.id ? white : textCol, lineHeight: 1.3 }}>{c.title}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* MAIN CONTENT */}
-          <div style={{ flex: 1, padding: "60px 80px 140px 80px", position: "relative", overflowY: "auto", background: bg, scrollbarWidth: "thin" }}>
-            <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 32 }}>
-                <div>
-                  <h1 style={{ fontSize: 44, fontWeight: 900, color: white, marginBottom: 16, lineHeight: 1.2 }}>{activeCourse.title}</h1>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
-                    <span style={{ fontSize: 13, background: `rgba(255,255,255,0.05)`, padding: "6px 14px", borderRadius: 6, color: textCol, fontWeight: 600 }}>{activeCourse.level}</span>
-                    <span style={{ fontSize: 13, background: `rgba(255,255,255,0.05)`, padding: "6px 14px", borderRadius: 6, color: textCol, fontWeight: 600 }}>{activeCourse.duration}</span>
-                    <span style={{ fontSize: 13, background: `rgba(255,255,255,0.05)`, padding: "6px 14px", borderRadius: 6, color: textCol, fontWeight: 600 }}>{activeCourse.mode}</span>
-                  </div>
-                </div>
-                <div style={{ textAlign: "right" }}>
-                  <div style={{ display: "flex", gap: 4, alignItems: "center", color: orange, fontSize: 15, fontWeight: 700, justifyContent: "flex-end", marginBottom: 8 }}>
-                    ★ {activeCourse.rating} <span style={{ color: muted, fontWeight: 500 }}>({activeCourse.enrolled} students)</span>
-                  </div>
-                  {activeCourse.certificate && <div style={{ fontSize: 13, color: neon, fontWeight: 600 }}>✓ Certificate of Completion</div>}
-                </div>
+            {/* SIDEBAR */}
+            <div style={{
+              width: "320px", flexShrink: 0, borderRight: `1px solid ${border2}`, background: `rgba(2, 6, 16, 0.95)`,
+              display: "flex", flexDirection: "column", height: "calc(100vh - 72px)", position: "sticky", top: 72
+            }}>
+              <div style={{ padding: "24px", borderBottom: `1px solid ${border2}` }}>
+                <button onClick={() => setActiveCourse(null)} style={{
+                  background: "transparent", color: muted, border: "none", display: "flex", alignItems: "center", gap: 8,
+                  cursor: "pointer", fontSize: 14, fontWeight: 600, padding: 0, transition: "color .2s"
+                }} onMouseEnter={e => e.currentTarget.style.color = white} onMouseLeave={e => e.currentTarget.style.color = muted}>
+                  ← Back to All Courses
+                </button>
               </div>
+              <div style={{ overflowY: "auto", flex: 1, padding: "16px", scrollbarWidth: "thin" }}>
+                {COURSES.map(c => (
+                  <div key={c.id} onClick={() => { setActiveCourse(c); window.scrollTo(0, 0); }} style={{
+                    padding: "16px", borderRadius: 12, cursor: "pointer", marginBottom: 12,
+                    background: activeCourse.id === c.id ? `${c.color}1a` : "transparent",
+                    border: `1px solid ${activeCourse.id === c.id ? `${c.color}4d` : border2}`,
+                    transition: "all .2s"
+                  }} onMouseEnter={e => { if (activeCourse.id !== c.id) e.currentTarget.style.borderColor = `${c.color}66` }}
+                    onMouseLeave={e => { if (activeCourse.id !== c.id) e.currentTarget.style.borderColor = border2 }}>
+                    <div style={{ fontSize: 11, color: c.color, textTransform: "uppercase", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>{c.category}</div>
+                    <div style={{ fontSize: 15, fontWeight: 800, color: activeCourse.id === c.id ? white : textCol, lineHeight: 1.3 }}>{c.title}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-              <p style={{ fontSize: 18, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: 40, maxWidth: 800 }}>{activeCourse.desc}</p>
+            {/* MAIN CONTENT */}
+            <div style={{ flex: 1, padding: "60px 80px 140px 80px", position: "relative", overflowY: "auto", background: bg, scrollbarWidth: "thin" }}>
+              <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 32 }}>
+                  <div>
+                    <h1 style={{ fontSize: 44, fontWeight: 900, color: white, marginBottom: 16, lineHeight: 1.2 }}>{activeCourse.title}</h1>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+                      <span style={{ fontSize: 13, background: `rgba(255,255,255,0.05)`, padding: "6px 14px", borderRadius: 6, color: textCol, fontWeight: 600 }}>{activeCourse.level}</span>
+                      <span style={{ fontSize: 13, background: `rgba(255,255,255,0.05)`, padding: "6px 14px", borderRadius: 6, color: textCol, fontWeight: 600 }}>{activeCourse.duration}</span>
+                      <span style={{ fontSize: 13, background: `rgba(255,255,255,0.05)`, padding: "6px 14px", borderRadius: 6, color: textCol, fontWeight: 600 }}>{activeCourse.mode}</span>
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "right" }}>
+                    <div style={{ display: "flex", gap: 4, alignItems: "center", color: orange, fontSize: 15, fontWeight: 700, justifyContent: "flex-end", marginBottom: 8 }}>
+                      ★ {activeCourse.rating} <span style={{ color: muted, fontWeight: 500 }}>({activeCourse.enrolled} students)</span>
+                    </div>
+                    {activeCourse.certificate && <div style={{ fontSize: 13, color: neon, fontWeight: 600 }}>✓ Certificate of Completion</div>}
+                  </div>
+                </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: 40, marginBottom: 60, padding: "32px", background: `rgba(255,255,255,0.02)`, borderRadius: 16, border: `1px solid rgba(255,255,255,0.05)` }}>
-                <div>
-                  <h4 style={{ fontSize: 14, color: muted, textTransform: "uppercase", letterSpacing: 1, marginBottom: 16 }}>Target Roles</h4>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-                    {activeCourse.targetRoles.map((role, idx) => (
-                      <span key={idx} style={{ fontSize: 13, color: cyan, background: `${cyan}1a`, padding: "6px 12px", borderRadius: 4, border: `1px solid ${cyan}33`, fontWeight: 600 }}>{role}</span>
+                <p style={{ fontSize: 18, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: 40, maxWidth: 800 }}>{activeCourse.desc}</p>
+
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: 40, marginBottom: 60, padding: "32px", background: `rgba(255,255,255,0.02)`, borderRadius: 16, border: `1px solid rgba(255,255,255,0.05)` }}>
+                  <div>
+                    <h4 style={{ fontSize: 14, color: muted, textTransform: "uppercase", letterSpacing: 1, marginBottom: 16 }}>Target Roles</h4>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                      {activeCourse.targetRoles.map((role, idx) => (
+                        <span key={idx} style={{ fontSize: 13, color: cyan, background: `${cyan}1a`, padding: "6px 12px", borderRadius: 4, border: `1px solid ${cyan}33`, fontWeight: 600 }}>{role}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: 14, color: muted, textTransform: "uppercase", letterSpacing: 1, marginBottom: 16 }}>Prerequisites</h4>
+                    <p style={{ fontSize: 15, color: textCol, lineHeight: 1.6, margin: 0 }}>{activeCourse.prerequisites}</p>
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: 60 }}>
+                  <h3 style={{ fontSize: 24, color: white, fontWeight: 800, marginBottom: 24 }}>What You'll Learn</h3>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
+                    {activeCourse.learningOutcomes.map((outcome, idx) => (
+                      <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                        <div style={{ color: activeCourse.color, fontSize: 18, marginTop: -2, fontWeight: 800 }}>✓</div>
+                        <div style={{ color: textCol, fontSize: 15, lineHeight: 1.6 }}>{outcome}</div>
+                      </div>
                     ))}
                   </div>
                 </div>
+
                 <div>
-                  <h4 style={{ fontSize: 14, color: muted, textTransform: "uppercase", letterSpacing: 1, marginBottom: 16 }}>Prerequisites</h4>
-                  <p style={{ fontSize: 15, color: textCol, lineHeight: 1.6, margin: 0 }}>{activeCourse.prerequisites}</p>
-                </div>
-              </div>
-
-              <div style={{ marginBottom: 60 }}>
-                <h3 style={{ fontSize: 24, color: white, fontWeight: 800, marginBottom: 24 }}>What You'll Learn</h3>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
-                  {activeCourse.learningOutcomes.map((outcome, idx) => (
-                    <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                      <div style={{ color: activeCourse.color, fontSize: 18, marginTop: -2, fontWeight: 800 }}>✓</div>
-                      <div style={{ color: textCol, fontSize: 15, lineHeight: 1.6 }}>{outcome}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 style={{ fontSize: 24, color: white, fontWeight: 800, marginBottom: 24 }}>Course Syllabus</h3>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))", gap: 16 }}>
-                  {activeCourse.modules.map((mod, idx) => (
-                    <div key={idx} style={{ 
-                      background: card, padding: "24px", borderRadius: 12, border: `1px solid ${border2}`, 
-                      color: textCol, fontSize: 15, fontWeight: 600, display: "flex", alignItems: "center", gap: 16
-                    }}>
-                      <div style={{ width: 40, height: 40, borderRadius: 8, background: `${activeCourse.color}1a`, color: activeCourse.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, flexShrink: 0 }}>
-                        {idx + 1}
+                  <h3 style={{ fontSize: 24, color: white, fontWeight: 800, marginBottom: 24 }}>Course Syllabus</h3>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))", gap: 16 }}>
+                    {activeCourse.modules.map((mod, idx) => (
+                      <div key={idx} style={{
+                        background: card, padding: "24px", borderRadius: 12, border: `1px solid ${border2}`,
+                        color: textCol, fontSize: 15, fontWeight: 600, display: "flex", alignItems: "center", gap: 16
+                      }}>
+                        <div style={{ width: 40, height: 40, borderRadius: 8, background: `${activeCourse.color}1a`, color: activeCourse.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, flexShrink: 0 }}>
+                          {idx + 1}
+                        </div>
+                        {mod}
                       </div>
-                      {mod}
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Sticky bottom bar for Enrollment */}
+              <div style={{
+                position: "fixed", bottom: 0, left: 320, right: 0, padding: "16px 80px",
+                background: `rgba(4, 10, 18, 0.9)`, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
+                display: "flex", justifyContent: "center", borderTop: `1px solid ${border2}`, zIndex: 10
+              }}>
+                <div style={{ display: "flex", justifyContent: "flex-start", gap: "40px", alignItems: "center", width: "100%", maxWidth: 1200 }}>
+                  <div>
+                    <div style={{ fontSize: 22, fontWeight: 900, color: white }}>₹{activeCourse.price.toLocaleString()}</div>
+                    {activeCourse.originalPrice && <div style={{ fontSize: 12, color: muted, textDecoration: "line-through", marginTop: 2 }}>₹{activeCourse.originalPrice.toLocaleString()}</div>}
+                  </div>
+                  <Btn onClick={() => navigate('/register')} style={{ padding: "10px 32px", fontSize: 14, background: activeCourse.color, borderColor: activeCourse.color, color: "#040e1a", fontWeight: 800 }}>Enroll Now</Btn>
                 </div>
               </div>
             </div>
-            
-            {/* Sticky bottom bar for Enrollment */}
-            <div style={{
-              position: "fixed", bottom: 0, left: 320, right: 0, padding: "16px 80px",
-              background: `rgba(4, 10, 18, 0.9)`, backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
-              display: "flex", justifyContent: "center", borderTop: `1px solid ${border2}`, zIndex: 10
-            }}>
-              <div style={{ display: "flex", justifyContent: "flex-start", gap: "40px", alignItems: "center", width: "100%", maxWidth: 1200 }}>
-                <div>
-                  <div style={{ fontSize: 22, fontWeight: 900, color: white }}>₹{activeCourse.price.toLocaleString()}</div>
-                  {activeCourse.originalPrice && <div style={{ fontSize: 12, color: muted, textDecoration: "line-through", marginTop: 2 }}>₹{activeCourse.originalPrice.toLocaleString()}</div>}
-                </div>
-                <Btn onClick={() => navigate('/register')} style={{ padding: "10px 32px", fontSize: 14, background: activeCourse.color, borderColor: activeCourse.color, color: "#040e1a", fontWeight: 800 }}>Enroll Now</Btn>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
         ) : (
-          <motion.div 
+          <motion.div
             key="grid-view"
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}
           >
 
-      {/* 1. HERO SECTION */}
-      <section style={{
-        minHeight: "40vh", position: "relative", overflow: "hidden", marginTop: "72px",
-        background: `linear-gradient(175deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%), url('/background%20for%20courses.png') center 40% / cover no-repeat`,
-        display: "flex", flexDirection: "column", justifyContent: "center", padding: "60px 56px",
-      }}>
-        <div style={{ position: "relative", zIndex: 1, maxWidth: 800 }}>
-          <div style={{ fontSize: 13, color: muted, marginBottom: 16, display: "flex", gap: 8, alignItems: "center", fontWeight: 600 }}>
-            <Link to="/" style={{ color: muted, textDecoration: "none", transition: "color .2s" }} onMouseEnter={e => e.currentTarget.style.color = white} onMouseLeave={e => e.currentTarget.style.color = muted}>Home</Link>
-            <span>&gt;</span>
-            <span style={{ color: neon }}>Courses</span>
-          </div>
-          <h1 style={{ fontSize: 46, fontWeight: 900, color: white, margin: "0 0 16px", letterSpacing: -0.5, textTransform: "uppercase" }}>
-            CYBERSECURITY <span style={{ color: neon }}>COURSES</span>
-          </h1>
-          <p style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, margin: "0 0 32px", maxWidth: 600 }}>
-            Industry-aligned training programs built and taught by active security professionals.
-          </p>
-          <div style={{ display: "flex", gap: 24 }}>
-            {[["10+", "Courses"], ["5000+", "Students"], ["100%", "Hands-on"]].map(([v, l]) => (
-              <div key={l}>
-                <div style={{ fontSize: 24, fontWeight: 900, color: neon }}>{v}</div>
-                <div style={{ fontSize: 12, color: muted, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>{l}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 2. FILTER & SEARCH */}
-      <section style={{
-        position: "sticky", top: 72, zIndex: 50,
-        background: `${bg2}d9`, backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)",
-        borderBottom: `1px solid ${border2}`, padding: "16px 56px"
-      }}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 20, alignItems: "center", justifyContent: "space-between" }}>
-
-          <div style={{ position: "relative", flex: "1 1 300px", maxWidth: 400 }}>
-            <input
-              type="text" placeholder="Search courses..."
-              value={search} onChange={e => setSearch(e.target.value)}
-              style={{
-                width: "100%", padding: "12px 16px 12px 40px", borderRadius: 8,
-                background: `rgba(0,0,0,0.2)`, border: `1px solid ${border2}`,
-                color: white, fontSize: 14, outline: "none", transition: "border-color .2s"
-              }}
-              onFocus={e => e.target.style.borderColor = neon}
-              onBlur={e => e.target.style.borderColor = border2}
-            />
-            <span style={{ position: "absolute", left: 14, top: 12, color: muted }}>🔍</span>
-          </div>
-
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
-            <div style={{ display: "flex", gap: 8 }}>
-              {["All", "Beginner", "Intermediate", "Advanced"].map(l => (
-                <button key={l} onClick={() => setLevel(l)} style={{
-                  padding: "6px 14px", borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: "pointer",
-                  background: level === l ? neon : "transparent",
-                  color: level === l ? "#040e1a" : muted,
-                  border: `1px solid ${level === l ? neon : border2}`,
-                  transition: "all .2s"
-                }}>{l}</button>
-              ))}
-            </div>
-
-            <div style={{ width: 1, height: 24, background: border2 }} />
-
-            <div style={{ display: "flex", gap: 8 }}>
-              {["All", "Online", "Offline", "Hybrid"].map(m => (
-                <button key={m} onClick={() => setMode(m)} style={{
-                  padding: "6px 14px", borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: "pointer",
-                  background: mode === m ? cyan : "transparent",
-                  color: mode === m ? "#040e1a" : muted,
-                  border: `1px solid ${mode === m ? cyan : border2}`,
-                  transition: "all .2s"
-                }}>{m === "All" ? "All Modes" : m}</button>
-              ))}
-            </div>
-
-            <div style={{ width: 1, height: 24, background: border2 }} />
-
-            <select value={sort} onChange={e => setSort(e.target.value)} style={{
-              background: "transparent", color: white, border: "none", outline: "none",
-              fontSize: 13, fontWeight: 600, cursor: "pointer"
+            {/* 1. HERO SECTION */}
+            <section style={{
+              minHeight: "40vh", position: "relative", overflow: "hidden", marginTop: "72px",
+              background: `linear-gradient(175deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%), url('/background%20for%20courses.png') center 40% / cover no-repeat`,
+              display: "flex", flexDirection: "column", justifyContent: "center", padding: "60px 56px",
             }}>
-              <option value="Popular" style={{ background: card }}>Most Popular</option>
-              <option value="Newest" style={{ background: card }}>Newest</option>
-              <option value="Price: Low-High" style={{ background: card }}>Price: Low to High</option>
-              <option value="Price: High-Low" style={{ background: card }}>Price: High to Low</option>
-            </select>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. COURSE GRID */}
-      <section className="section-container" style={{ 
-        padding: "60px 56px", minHeight: "50vh", position: "relative",
-        background: `#020610 radial-gradient(circle at 50% 0%, ${neon}15 0%, transparent 70%)`
-      }}>
-        <AnimatePresence>
-          {filteredCourses.length === 0 ? (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ textAlign: "center", padding: "80px 0" }}>
-              <div style={{ fontSize: 48, marginBottom: 16 }}>🔍</div>
-              <h3 style={{ fontSize: 20, color: white, marginBottom: 8 }}>No courses found</h3>
-              <p style={{ color: muted }}>Try adjusting your search or filters to find what you're looking for.</p>
-            </motion.div>
-          ) : (
-            <motion.div layout style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 30 }}>
-              {filteredCourses.map(course => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.2 }}
-                  key={course.id}
-                  style={{
-                    background: card, border: `1px solid ${border2}`, borderRadius: 16, overflow: "hidden",
-                  display: "flex", flexDirection: "column", cursor: "pointer",
-                  transition: "border-color .3s, transform .3s, box-shadow .3s"
-                }}
-                onClick={() => { setActiveCourse(course); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                onMouseEnter={e => {
-                    e.currentTarget.style.transform = "translateY(-4px)";
-                    e.currentTarget.style.borderColor = course.color;
-                    e.currentTarget.style.boxShadow = `0 12px 30px ${course.color}26`;
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.transform = "none";
-                    e.currentTarget.style.borderColor = border2;
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <div style={{ height: 6, background: course.color }} />
-                  <div style={{ padding: "24px", flex: 1, display: "flex", flexDirection: "column" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
-                      <div style={{ fontSize: 12, color: course.color, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>
-                        {course.category}
-                      </div>
-                      <div style={{ display: "flex", gap: 4, alignItems: "center", color: orange, fontSize: 12, fontWeight: 700 }}>
-                        ★ {course.rating} <span style={{ color: muted, fontWeight: 500 }}>({course.enrolled})</span>
-                      </div>
+              <div style={{ position: "relative", zIndex: 1, maxWidth: 800 }}>
+                <div style={{ fontSize: 13, color: muted, marginBottom: 16, display: "flex", gap: 8, alignItems: "center", fontWeight: 600 }}>
+                  <Link to="/" style={{ color: muted, textDecoration: "none", transition: "color .2s" }} onMouseEnter={e => e.currentTarget.style.color = white} onMouseLeave={e => e.currentTarget.style.color = muted}>Home</Link>
+                  <span>&gt;</span>
+                  <span style={{ color: neon }}>Courses</span>
+                </div>
+                <h1 style={{ fontSize: 46, fontWeight: 900, color: white, margin: "0 0 16px", letterSpacing: -0.5, textTransform: "uppercase" }}>
+                  CYBERSECURITY <span style={{ color: neon }}>COURSES</span>
+                </h1>
+                <p style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", lineHeight: 1.6, margin: "0 0 32px", maxWidth: 600 }}>
+                  Industry-aligned training programs built and taught by active security professionals.
+                </p>
+                <div style={{ display: "flex", gap: 24 }}>
+                  {[["10+", "Courses"], ["5000+", "Students"], ["100%", "Hands-on"]].map(([v, l]) => (
+                    <div key={l}>
+                      <div style={{ fontSize: 24, fontWeight: 900, color: neon }}>{v}</div>
+                      <div style={{ fontSize: 12, color: muted, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>{l}</div>
                     </div>
+                  ))}
+                </div>
+              </div>
+            </section>
 
-                    <h3 style={{ fontSize: 20, fontWeight: 800, color: white, marginBottom: 12, lineHeight: 1.3 }}>
-                      {course.title}
-                    </h3>
+            {/* 2. FILTER & SEARCH */}
+            <section style={{
+              position: "sticky", top: 72, zIndex: 50,
+              background: `${bg2}d9`, backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)",
+              borderBottom: `1px solid ${border2}`, padding: "16px 56px"
+            }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 20, alignItems: "center", justifyContent: "space-between" }}>
 
-                    <p style={{ fontSize: 13, color: muted, lineHeight: 1.6, marginBottom: 20, flex: 1 }}>
-                      {course.desc}
-                    </p>
+                <div style={{ position: "relative", flex: "1 1 300px", maxWidth: 400 }}>
+                  <input
+                    type="text" placeholder="Search courses..."
+                    value={search} onChange={e => setSearch(e.target.value)}
+                    style={{
+                      width: "100%", padding: "12px 16px 12px 40px", borderRadius: 8,
+                      background: `rgba(0,0,0,0.2)`, border: `1px solid ${border2}`,
+                      color: white, fontSize: 14, outline: "none", transition: "border-color .2s"
+                    }}
+                    onFocus={e => e.target.style.borderColor = neon}
+                    onBlur={e => e.target.style.borderColor = border2}
+                  />
+                  <span style={{ position: "absolute", left: 14, top: 12, color: muted }}>🔍</span>
+                </div>
 
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
-                      <span style={{ fontSize: 11, background: `rgba(255,255,255,0.05)`, padding: "4px 10px", borderRadius: 4, color: textCol }}>{course.level}</span>
-                      <span style={{ fontSize: 11, background: `rgba(255,255,255,0.05)`, padding: "4px 10px", borderRadius: 4, color: textCol }}>{course.duration}</span>
-                      <span style={{ fontSize: 11, background: `rgba(255,255,255,0.05)`, padding: "4px 10px", borderRadius: 4, color: textCol }}>{course.mode}</span>
-                    </div>
-
-                    <div style={{ borderTop: `1px solid ${border2}`, paddingTop: 20, display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-                      <div>
-                        {course.originalPrice && (
-                          <div style={{ fontSize: 12, color: muted, textDecoration: "line-through", marginBottom: 2 }}>
-                            ₹{course.originalPrice.toLocaleString()}
-                          </div>
-                        )}
-                        <div style={{ fontSize: 22, fontWeight: 900, color: white }}>
-                          ₹{course.price.toLocaleString()}
-                        </div>
-                      </div>
-                      <div style={{ display: "flex", gap: 8 }}>
-                        <Btn onClick={(e) => { e.stopPropagation(); setActiveCourse(course); window.scrollTo({ top: 0, behavior: "smooth" }); }} variant="outline" style={{ padding: "8px 16px", fontSize: 12, color: white, borderColor: border2 }}>Syllabus</Btn>
-                        <Btn onClick={(e) => { e.stopPropagation(); navigate('/register'); }} style={{ padding: "8px 16px", fontSize: 12, background: course.color, borderColor: course.color, color: "#040e1a" }}>Enroll</Btn>
-                      </div>
-                    </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    {["All", "Beginner", "Intermediate", "Advanced"].map(l => (
+                      <button key={l} onClick={() => setLevel(l)} style={{
+                        padding: "6px 14px", borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: "pointer",
+                        background: level === l ? neon : "transparent",
+                        color: level === l ? "#040e1a" : muted,
+                        border: `1px solid ${level === l ? neon : border2}`,
+                        transition: "all .2s"
+                      }}>{l}</button>
+                    ))}
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </section>
 
-      {/* 4. LEARNING PATHS (Skill Trees) */}
-      <section style={{ 
-        padding: "100px 56px", 
-        background: "#030303", 
-        borderTop: `1px solid rgba(255, 255, 255, 0.05)`, borderBottom: `1px solid rgba(255, 255, 255, 0.05)`,
-        position: "relative", overflow: "hidden"
-      }}>
-        {/* Decorative background element */}
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "80%", height: "80%", background: `radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 60%)`, pointerEvents: "none" }} />
-        
-        <div style={{ textAlign: "center", marginBottom: 60, position: "relative", zIndex: 1 }}>
-          <h2 style={{ fontSize: 36, fontWeight: 900, color: white, margin: "0 0 16px" }}>Structured Learning Paths</h2>
-          <p style={{ color: muted, fontSize: 16, maxWidth: 600, margin: "0 auto" }}>
-            Not sure where to start? Follow our guided career skill trees to go from beginner to hired professional.
-          </p>
-        </div>
+                  <div style={{ width: 1, height: 24, background: border2 }} />
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 32, maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          {PATHS.map((path, idx) => (
-            <div key={idx} style={{
-              background: `linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%), #000000`,
-              border: `1px solid rgba(255, 255, 255, 0.05)`, borderRadius: 24, padding: "40px",
-              boxShadow: `0 20px 40px rgba(0,0,0,0.5)`,
-              position: "relative", overflow: "hidden",
-              transition: "transform .3s ease", cursor: "default"
-            }} onMouseEnter={e => e.currentTarget.style.transform = "translateY(-5px)"} onMouseLeave={e => e.currentTarget.style.transform = "none"}>
-              
-              {/* Path Top Accent Glow */}
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: path.color, boxShadow: `0 0 20px ${path.color}` }} />
+                  <div style={{ display: "flex", gap: 8 }}>
+                    {["All", "Online", "Offline", "Hybrid"].map(m => (
+                      <button key={m} onClick={() => setMode(m)} style={{
+                        padding: "6px 14px", borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: "pointer",
+                        background: mode === m ? cyan : "transparent",
+                        color: mode === m ? "#040e1a" : muted,
+                        border: `1px solid ${mode === m ? cyan : border2}`,
+                        transition: "all .2s"
+                      }}>{m === "All" ? "All Modes" : m}</button>
+                    ))}
+                  </div>
 
-              <h3 style={{ fontSize: 24, fontWeight: 900, color: white, marginBottom: 8 }}>{path.title}</h3>
-              <div style={{ color: path.color, fontSize: 13, fontWeight: 700, marginBottom: 32, textTransform: "uppercase", letterSpacing: 1 }}>{path.steps.length} Milestones</div>
+                  <div style={{ width: 1, height: 24, background: border2 }} />
 
-              {/* Vertical Timeline / Skill Tree */}
-              <div style={{ position: "relative", paddingLeft: 24 }}>
-                {/* Connecting Line */}
-                <div style={{ position: "absolute", left: 7, top: 10, bottom: 30, width: 2, background: `linear-gradient(to bottom, ${path.color} 0%, transparent 100%)` }} />
-                
-                {path.steps.map((step, sIdx) => (
-                  <div key={sIdx} style={{ position: "relative", marginBottom: sIdx === path.steps.length - 1 ? 0 : 24 }}>
-                    {/* Node Dot */}
-                    <div style={{ 
-                      position: "absolute", left: -21, top: 6, width: 10, height: 10, 
-                      borderRadius: "50%", background: "#000", border: `2px solid ${path.color}`, 
-                      boxShadow: `0 0 10px ${path.color}80` 
-                    }} />
-                    
-                    {/* Step Content */}
-                    <div style={{
-                      background: `rgba(255, 255, 255, 0.02)`,
-                      border: `1px solid rgba(255, 255, 255, 0.05)`,
-                      color: white, padding: "12px 20px", borderRadius: 12, fontSize: 14, fontWeight: 600,
-                      transition: "all .2s ease"
-                    }} onMouseEnter={e => { e.currentTarget.style.background = `${path.color}1a`; e.currentTarget.style.borderColor = `${path.color}4d`; }}
-                       onMouseLeave={e => { e.currentTarget.style.background = `rgba(255, 255, 255, 0.02)`; e.currentTarget.style.borderColor = `rgba(255, 255, 255, 0.05)`; }}>
-                      <span style={{ color: muted, fontSize: 11, display: "block", marginBottom: 2 }}>Step 0{sIdx + 1}</span>
-                      {step}
+                  <select value={sort} onChange={e => setSort(e.target.value)} style={{
+                    background: "transparent", color: white, border: "none", outline: "none",
+                    fontSize: 13, fontWeight: 600, cursor: "pointer"
+                  }}>
+                    <option value="Popular" style={{ background: card }}>Most Popular</option>
+                    <option value="Newest" style={{ background: card }}>Newest</option>
+                    <option value="Price: Low-High" style={{ background: card }}>Price: Low to High</option>
+                    <option value="Price: High-Low" style={{ background: card }}>Price: High to Low</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            {/* 3. COURSE GRID */}
+            <section className="section-container" style={{
+              padding: "60px 56px", minHeight: "50vh", position: "relative",
+              background: `#020610 radial-gradient(circle at 50% 0%, ${neon}15 0%, transparent 70%)`
+            }}>
+              <AnimatePresence>
+                {filteredCourses.length === 0 ? (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ textAlign: "center", padding: "80px 0" }}>
+                    <div style={{ fontSize: 48, marginBottom: 16 }}>🔍</div>
+                    <h3 style={{ fontSize: 20, color: white, marginBottom: 8 }}>No courses found</h3>
+                    <p style={{ color: muted }}>Try adjusting your search or filters to find what you're looking for.</p>
+                  </motion.div>
+                ) : (
+                  <motion.div layout style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 30 }}>
+                    {filteredCourses.map(course => (
+                      <motion.div
+                        layout
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.2 }}
+                        key={course.id}
+                        style={{
+                          background: card, border: `1px solid ${border2}`, borderRadius: 16, overflow: "hidden",
+                          display: "flex", flexDirection: "column", cursor: "pointer",
+                          transition: "border-color .3s, transform .3s, box-shadow .3s"
+                        }}
+                        onClick={() => { setActiveCourse(course); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.transform = "translateY(-4px)";
+                          e.currentTarget.style.borderColor = course.color;
+                          e.currentTarget.style.boxShadow = `0 12px 30px ${course.color}26`;
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.transform = "none";
+                          e.currentTarget.style.borderColor = border2;
+                          e.currentTarget.style.boxShadow = "none";
+                        }}
+                      >
+                        <div style={{ height: 6, background: course.color }} />
+                        <div style={{ padding: "24px", flex: 1, display: "flex", flexDirection: "column" }}>
+                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
+                            <div style={{ fontSize: 12, color: course.color, fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>
+                              {course.category}
+                            </div>
+                            <div style={{ display: "flex", gap: 4, alignItems: "center", color: orange, fontSize: 12, fontWeight: 700 }}>
+                              ★ {course.rating} <span style={{ color: muted, fontWeight: 500 }}>({course.enrolled})</span>
+                            </div>
+                          </div>
+
+                          <h3 style={{ fontSize: 20, fontWeight: 800, color: white, marginBottom: 12, lineHeight: 1.3 }}>
+                            {course.title}
+                          </h3>
+
+                          <p style={{ fontSize: 13, color: muted, lineHeight: 1.6, marginBottom: 20, flex: 1 }}>
+                            {course.desc}
+                          </p>
+
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
+                            <span style={{ fontSize: 11, background: `rgba(255,255,255,0.05)`, padding: "4px 10px", borderRadius: 4, color: textCol }}>{course.level}</span>
+                            <span style={{ fontSize: 11, background: `rgba(255,255,255,0.05)`, padding: "4px 10px", borderRadius: 4, color: textCol }}>{course.duration}</span>
+                            <span style={{ fontSize: 11, background: `rgba(255,255,255,0.05)`, padding: "4px 10px", borderRadius: 4, color: textCol }}>{course.mode}</span>
+                          </div>
+
+                          <div style={{ borderTop: `1px solid ${border2}`, paddingTop: 20, display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+                            <div>
+                              {course.originalPrice && (
+                                <div style={{ fontSize: 12, color: muted, textDecoration: "line-through", marginBottom: 2 }}>
+                                  ₹{course.originalPrice.toLocaleString()}
+                                </div>
+                              )}
+                              <div style={{ fontSize: 22, fontWeight: 900, color: white }}>
+                                ₹{course.price.toLocaleString()}
+                              </div>
+                            </div>
+                            <div style={{ display: "flex", gap: 8 }}>
+                              <Btn onClick={(e) => { e.stopPropagation(); setActiveCourse(course); window.scrollTo({ top: 0, behavior: "smooth" }); }} variant="outline" style={{ padding: "8px 16px", fontSize: 12, color: white, borderColor: border2 }}>Syllabus</Btn>
+                              <Btn onClick={(e) => { e.stopPropagation(); navigate('/register'); }} style={{ padding: "8px 16px", fontSize: 12, background: course.color, borderColor: course.color, color: "#040e1a" }}>Enroll</Btn>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </section>
+
+            {/* 4. LEARNING PATHS (Skill Trees) */}
+            <section style={{
+              padding: "100px 56px",
+              background: "#030303",
+              borderTop: `1px solid rgba(255, 255, 255, 0.05)`, borderBottom: `1px solid rgba(255, 255, 255, 0.05)`,
+              position: "relative", overflow: "hidden"
+            }}>
+              {/* Decorative background element */}
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "80%", height: "80%", background: `radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 60%)`, pointerEvents: "none" }} />
+
+              <div style={{ textAlign: "center", marginBottom: 60, position: "relative", zIndex: 1 }}>
+                <h2 style={{ fontSize: 36, fontWeight: 900, color: white, margin: "0 0 16px" }}>Structured Learning Paths</h2>
+                <p style={{ color: muted, fontSize: 16, maxWidth: 600, margin: "0 auto" }}>
+                  Not sure where to start? Follow our guided career skill trees to go from beginner to hired professional.
+                </p>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 32, maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
+                {PATHS.map((path, idx) => (
+                  <div key={idx} style={{
+                    background: `linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%), #000000`,
+                    border: `1px solid rgba(255, 255, 255, 0.05)`, borderRadius: 24, padding: "40px",
+                    boxShadow: `0 20px 40px rgba(0,0,0,0.5)`,
+                    position: "relative", overflow: "hidden",
+                    transition: "transform .3s ease", cursor: "default"
+                  }} onMouseEnter={e => e.currentTarget.style.transform = "translateY(-5px)"} onMouseLeave={e => e.currentTarget.style.transform = "none"}>
+
+                    {/* Path Top Accent Glow */}
+                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: path.color, boxShadow: `0 0 20px ${path.color}` }} />
+
+                    <h3 style={{ fontSize: 24, fontWeight: 900, color: white, marginBottom: 8 }}>{path.title}</h3>
+                    <div style={{ color: path.color, fontSize: 13, fontWeight: 700, marginBottom: 32, textTransform: "uppercase", letterSpacing: 1 }}>{path.steps.length} Milestones</div>
+
+                    {/* Vertical Timeline / Skill Tree */}
+                    <div style={{ position: "relative", paddingLeft: 24 }}>
+                      {/* Connecting Line */}
+                      <div style={{ position: "absolute", left: 7, top: 10, bottom: 30, width: 2, background: `linear-gradient(to bottom, ${path.color} 0%, transparent 100%)` }} />
+
+                      {path.steps.map((step, sIdx) => (
+                        <div key={sIdx} style={{ position: "relative", marginBottom: sIdx === path.steps.length - 1 ? 0 : 24 }}>
+                          {/* Node Dot */}
+                          <div style={{
+                            position: "absolute", left: -21, top: 6, width: 10, height: 10,
+                            borderRadius: "50%", background: "#000", border: `2px solid ${path.color}`,
+                            boxShadow: `0 0 10px ${path.color}80`
+                          }} />
+
+                          {/* Step Content */}
+                          <div style={{
+                            background: `rgba(255, 255, 255, 0.02)`,
+                            border: `1px solid rgba(255, 255, 255, 0.05)`,
+                            color: white, padding: "12px 20px", borderRadius: 12, fontSize: 14, fontWeight: 600,
+                            transition: "all .2s ease"
+                          }} onMouseEnter={e => { e.currentTarget.style.background = `${path.color}1a`; e.currentTarget.style.borderColor = `${path.color}4d`; }}
+                            onMouseLeave={e => { e.currentTarget.style.background = `rgba(255, 255, 255, 0.02)`; e.currentTarget.style.borderColor = `rgba(255, 255, 255, 0.05)`; }}>
+                            <span style={{ color: muted, fontSize: 11, display: "block", marginBottom: 2 }}>Step 0{sIdx + 1}</span>
+                            {step}
+                          </div>
+                        </div>
+                      ))}
                     </div>
+
+                    <Btn onClick={() => alert('Full syllabus downloaded.')} variant="outline" style={{ width: "100%", marginTop: 40, borderColor: `${path.color}4d`, color: path.color }}>Explore Full Syllabus</Btn>
                   </div>
                 ))}
               </div>
+            </section>
 
-              <Btn onClick={() => alert('Full syllabus downloaded.')} variant="outline" style={{ width: "100%", marginTop: 40, borderColor: `${path.color}4d`, color: path.color }}>Explore Full Syllabus</Btn>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. UPCOMING BATCHES */}
-      <section className="section-container" style={{ 
-        padding: "80px 56px 120px", position: "relative",
-        background: `#000000 repeating-linear-gradient(0deg, transparent, transparent 49px, ${border} 50px), repeating-linear-gradient(90deg, transparent, transparent 49px, ${border} 50px)`,
-        backgroundSize: "100% 100%, 50px 50px, 50px 50px"
-      }}>
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <h2 style={{ fontSize: 28, fontWeight: 900, color: white, marginBottom: 40 }}>Upcoming Live Batches</h2>
-          <div style={{ background: card, border: `1px solid ${border2}`, borderRadius: 16, overflow: "hidden" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
-            <thead>
-              <tr style={{ background: `rgba(255,255,255,0.03)`, borderBottom: `1px solid ${border2}` }}>
-                <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Course Program</th>
-                <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Start Date</th>
-                <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Mode</th>
-                <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Seats Left</th>
-                <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {BATCHES.map((b, i) => (
-                <tr key={i} style={{ borderBottom: i === BATCHES.length - 1 ? "none" : `1px solid ${border2}` }}>
-                  <td style={{ padding: "20px 30px", fontSize: 15, fontWeight: 700, color: white }}>{b.course}</td>
-                  <td style={{ padding: "20px 30px", fontSize: 14, color: textCol }}>{b.date}</td>
-                  <td style={{ padding: "20px 30px" }}>
-                    <span style={{
-                      fontSize: 11, background: `${cyan}1a`, color: cyan,
-                      padding: "4px 10px", borderRadius: 4, fontWeight: 700
-                    }}>{b.mode}</span>
-                  </td>
-                  <td style={{ padding: "20px 30px", fontSize: 14, color: b.seats < 5 ? orange : textCol, fontWeight: b.seats < 5 ? 700 : 400 }}>
-                    {b.seats < 5 ? `Only ${b.seats} left!` : b.seats}
-                  </td>
-                  <td style={{ padding: "20px 30px" }}>
-                    <Btn onClick={() => navigate('/register')} variant="outline" style={{ fontSize: 12, padding: "6px 16px" }}>Register</Btn>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        </div>
-      </section>
+            {/* 5. UPCOMING BATCHES */}
+            <section className="section-container" style={{
+              padding: "80px 56px 120px", position: "relative",
+              background: `#000000 repeating-linear-gradient(0deg, transparent, transparent 49px, ${border} 50px), repeating-linear-gradient(90deg, transparent, transparent 49px, ${border} 50px)`,
+              backgroundSize: "100% 100%, 50px 50px, 50px 50px"
+            }}>
+              <div style={{ position: "relative", zIndex: 1 }}>
+                <h2 style={{ fontSize: 28, fontWeight: 900, color: white, marginBottom: 40 }}>Upcoming Live Batches</h2>
+                <div style={{ background: card, border: `1px solid ${border2}`, borderRadius: 16, overflow: "hidden" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "left" }}>
+                    <thead>
+                      <tr style={{ background: `rgba(255,255,255,0.03)`, borderBottom: `1px solid ${border2}` }}>
+                        <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Course Program</th>
+                        <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Start Date</th>
+                        <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Mode</th>
+                        <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Seats Left</th>
+                        <th style={{ padding: "20px 30px", fontSize: 12, color: muted, textTransform: "uppercase", letterSpacing: 1 }}>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {BATCHES.map((b, i) => (
+                        <tr key={i} style={{ borderBottom: i === BATCHES.length - 1 ? "none" : `1px solid ${border2}` }}>
+                          <td style={{ padding: "20px 30px", fontSize: 15, fontWeight: 700, color: white }}>{b.course}</td>
+                          <td style={{ padding: "20px 30px", fontSize: 14, color: textCol }}>{b.date}</td>
+                          <td style={{ padding: "20px 30px" }}>
+                            <span style={{
+                              fontSize: 11, background: `${cyan}1a`, color: cyan,
+                              padding: "4px 10px", borderRadius: 4, fontWeight: 700
+                            }}>{b.mode}</span>
+                          </td>
+                          <td style={{ padding: "20px 30px", fontSize: 14, color: b.seats < 5 ? orange : textCol, fontWeight: b.seats < 5 ? 700 : 400 }}>
+                            {b.seats < 5 ? `Only ${b.seats} left!` : b.seats}
+                          </td>
+                          <td style={{ padding: "20px 30px" }}>
+                            <Btn onClick={() => navigate('/register')} variant="outline" style={{ fontSize: 12, padding: "6px 16px" }}>Register</Btn>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
 
           </motion.div>
         )}

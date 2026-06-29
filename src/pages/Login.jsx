@@ -240,123 +240,123 @@ export default function Login() {
             </div>
 
             <form onSubmit={handleSubmit}>
-          {/* Email */}
-          <div style={{ marginBottom: 22 }}>
-            <label style={labelStyle}>Email Address</label>
-            <input
-              id="login-email"
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              onFocus={() => setFocusedField("email")}
-              onBlur={() => setFocusedField(null)}
-              placeholder="name@company.com"
-              style={inputStyle("email")}
-              required
-            />
-          </div>
+              {/* Email */}
+              <div style={{ marginBottom: 22 }}>
+                <label style={labelStyle}>Email Address</label>
+                <input
+                  id="login-email"
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  onFocus={() => setFocusedField("email")}
+                  onBlur={() => setFocusedField(null)}
+                  placeholder="name@company.com"
+                  style={inputStyle("email")}
+                  required
+                />
+              </div>
 
-          {/* Password */}
-          <div style={{ marginBottom: 12 }}>
-            <label style={labelStyle}>Password</label>
-            <div style={{ position: "relative" }}>
-              <input
-                id="login-password"
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                onFocus={() => setFocusedField("password")}
-                onBlur={() => setFocusedField(null)}
-                placeholder="Enter your password"
-                style={inputStyle("password")}
-                required
-              />
+              {/* Password */}
+              <div style={{ marginBottom: 12 }}>
+                <label style={labelStyle}>Password</label>
+                <div style={{ position: "relative" }}>
+                  <input
+                    id="login-password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    onFocus={() => setFocusedField("password")}
+                    onBlur={() => setFocusedField(null)}
+                    placeholder="Enter your password"
+                    style={inputStyle("password")}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{
+                      position: "absolute", right: 14, top: "50%", transform: "translateY(-50%)",
+                      background: "transparent", border: "none", color: muted,
+                      cursor: "pointer", fontSize: 13, padding: 4,
+                      transition: "color 0.2s",
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.color = cyan}
+                    onMouseLeave={e => e.currentTarget.style.color = muted}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    ) : (
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                        <line x1="1" y1="1" x2="23" y2="23" />
+                        <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Forgot Password */}
+              <div style={{ textAlign: "right", marginBottom: 28 }}>
+                <span
+                  onClick={() => setView("forgot")}
+                  style={{
+                    color: cyan, fontSize: 12.5, cursor: "pointer",
+                    transition: "opacity 0.2s", fontWeight: 500,
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = "0.7"}
+                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                >
+                  Forgot Password?
+                </span>
+              </div>
+
+              {/* Submit Button */}
               <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
+                id="login-submit"
+                type="submit"
+                disabled={loading}
                 style={{
-                  position: "absolute", right: 14, top: "50%", transform: "translateY(-50%)",
-                  background: "transparent", border: "none", color: muted,
-                  cursor: "pointer", fontSize: 13, padding: 4,
-                  transition: "color 0.2s",
+                  width: "100%",
+                  padding: "14px",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  fontFamily: "inherit",
+                  background: loading ? `${cyan}88` : `linear-gradient(135deg, ${cyan}, #0099dd)`,
+                  border: "none",
+                  borderRadius: 10,
+                  color: "#050d1a",
+                  cursor: loading ? "not-allowed" : "pointer",
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                  boxShadow: `0 4px 16px ${cyan}33`,
+                  letterSpacing: 0.5,
                 }}
-                onMouseEnter={e => e.currentTarget.style.color = cyan}
-                onMouseLeave={e => e.currentTarget.style.color = muted}
-                aria-label={showPassword ? "Hide password" : "Show password"}
+                onMouseEnter={e => { if (!loading) { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 8px 24px ${cyan}44`; } }}
+                onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = `0 4px 16px ${cyan}33`; }}
               >
-                {showPassword ? (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                ) : (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
-                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
-                    <line x1="1" y1="1" x2="23" y2="23" />
-                    <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
-                  </svg>
-                )}
+                {loading ? "Authenticating..." : "Log In"}
               </button>
-            </div>
-          </div>
 
-          {/* Forgot Password */}
-          <div style={{ textAlign: "right", marginBottom: 28 }}>
-            <span 
-              onClick={() => setView("forgot")}
-              style={{
-                color: cyan, fontSize: 12.5, cursor: "pointer",
-                transition: "opacity 0.2s", fontWeight: 500,
-              }}
-              onMouseEnter={e => e.currentTarget.style.opacity = "0.7"}
-              onMouseLeave={e => e.currentTarget.style.opacity = "1"}
-            >
-              Forgot Password?
-            </span>
-          </div>
-
-          {/* Submit Button */}
-          <button
-            id="login-submit"
-            type="submit"
-            disabled={loading}
-            style={{
-              width: "100%",
-              padding: "14px",
-              fontSize: 14,
-              fontWeight: 700,
-              fontFamily: "inherit",
-              background: loading ? `${cyan}88` : `linear-gradient(135deg, ${cyan}, #0099dd)`,
-              border: "none",
-              borderRadius: 10,
-              color: "#050d1a",
-              cursor: loading ? "not-allowed" : "pointer",
-              transition: "transform 0.2s ease, box-shadow 0.2s ease",
-              boxShadow: `0 4px 16px ${cyan}33`,
-              letterSpacing: 0.5,
-            }}
-            onMouseEnter={e => { if (!loading) { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 8px 24px ${cyan}44`; }}}
-            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = `0 4px 16px ${cyan}33`; }}
-          >
-            {loading ? "Authenticating..." : "Log In"}
-          </button>
-
-          {/* Register Link */}
-          <div style={{ marginTop: 28, textAlign: "center", fontSize: 13.5, color: muted }}>
-            Don't have portal access?{" "}
-            <Link to="/register" style={{
-              color: cyan, textDecoration: "none", fontWeight: 600,
-              transition: "opacity 0.2s",
-            }}
-              onMouseEnter={e => e.currentTarget.style.opacity = "0.75"}
-              onMouseLeave={e => e.currentTarget.style.opacity = "1"}
-            >
-              Register Here
-            </Link>
-          </div>
-        </form>
-        </>
+              {/* Register Link */}
+              <div style={{ marginTop: 28, textAlign: "center", fontSize: 13.5, color: muted }}>
+                Don't have portal access?{" "}
+                <Link to="/register" style={{
+                  color: cyan, textDecoration: "none", fontWeight: 600,
+                  transition: "opacity 0.2s",
+                }}
+                  onMouseEnter={e => e.currentTarget.style.opacity = "0.75"}
+                  onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+                >
+                  Register Here
+                </Link>
+              </div>
+            </form>
+          </>
         )}
       </div>
     </main>

@@ -54,30 +54,33 @@ function NavItem({ item, currentPath }) {
           }}>
             {subLinks.map(sub => {
               let targetPath = "/";
-              
+
               if (["All Courses", "Workshops", "Certifications", "Internships"].includes(sub)) targetPath = "/courses";
               if (sub === "Student Portal") targetPath = "/login";
-              
+
               if (["VAPT", "Digital Forensics", "Incident Response", "Security Audits", "Consulting"].includes(sub)) {
                 targetPath = "/services";
                 if (sub === "VAPT") targetPath += "#vapt";
                 if (sub === "Digital Forensics" || sub === "Incident Response") targetPath += "#dfir";
                 if (sub === "Security Audits" || sub === "Consulting") targetPath += "#consulting";
               }
-              
-              if (["Tools", "Cybersecurity News", "Free Resources", "Glossary"].includes(sub)) targetPath = "/blog";
-              if (sub === "FAQ") targetPath = "/faq";
-              
+
+              if (sub === "Tools") targetPath = "/resources?tab=tools";
+              if (sub === "Cybersecurity News") targetPath = "/resources?tab=news";
+              if (sub === "Free Resources") targetPath = "/resources?tab=free-resources";
+              if (sub === "Glossary") targetPath = "/resources?tab=glossary";
+              if (sub === "FAQ") targetPath = "/resources?tab=faq";
+
               return (
-              <Link key={sub} to={targetPath} style={{
-                color: textCol, textDecoration: "none",
-                padding: "10px 16px", fontSize: 13, fontWeight: 500,
-                transition: "background .15s, color .15s"
-              }}
-                onMouseEnter={e => { e.currentTarget.style.background = border2; e.currentTarget.style.color = neon; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = textCol; }}>
-                {sub}
-              </Link>
+                <Link key={sub} to={targetPath} style={{
+                  color: textCol, textDecoration: "none",
+                  padding: "10px 16px", fontSize: 13, fontWeight: 500,
+                  transition: "background .15s, color .15s"
+                }}
+                  onMouseEnter={e => { e.currentTarget.style.background = border2; e.currentTarget.style.color = neon; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = textCol; }}>
+                  {sub}
+                </Link>
               );
             })}
           </div>
